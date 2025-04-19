@@ -10,7 +10,7 @@ const HeroSection = () => {
         <h1 className="text-4xl md:text-6xl font-bold mb-4">Omar Hussein</h1>
         <h2 className="text-xl md:text-2xl text-primary mb-6">Web Developer</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-          ITI-Certified Web Developer with 2+ years of experience specializing in WordPress development and marketing solutions.
+          With over 2 years of WordPress expertise, I've designed and developed 20+ websites for diverse industries, including healthcare, travel, and e-commerce. My work focuses on creating responsive, conversion-driven layouts, integrating CRMs like Bitrix24 for streamlined workflows, and collaborating with cross-functional teams to align design with business goals. This approach has consistently improved client engagement by 30%+ and accelerated project delivery timelines.
         </p>
         
         <div className="flex flex-wrap justify-center gap-4 mb-8">
