@@ -4,15 +4,26 @@ import ExperienceSection from "@/components/ExperienceSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import EducationSection from "@/components/EducationSection";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Index = () => {
+  useScrollAnimation();
+  
   return (
     <div className="min-h-screen bg-background">
       <HeroSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <SkillsSection />
-      <EducationSection />
+      <div data-animate>
+        <ExperienceSection />
+      </div>
+      <div data-animate>
+        <ProjectsSection />
+      </div>
+      <div data-animate>
+        <SkillsSection />
+      </div>
+      <div data-animate>
+        <EducationSection />
+      </div>
     </div>
   );
 };
