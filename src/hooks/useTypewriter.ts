@@ -5,6 +5,9 @@ export const useTypewriter = (text: string, speed: number = 100) => {
   const [displayText, setDisplayText] = useState('');
 
   useEffect(() => {
+    // Reset displayText when text changes
+    setDisplayText('');
+    
     let i = 0;
     const timer = setInterval(() => {
       if (i < text.length) {
