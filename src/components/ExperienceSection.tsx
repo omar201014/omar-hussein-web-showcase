@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const ExperienceSection = () => {
@@ -29,10 +28,12 @@ const ExperienceSection = () => {
   return (
     <section className="py-16 px-4" id="experience">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">Experience</h2>
-        <div className="grid gap-6">
+        <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          Experience
+        </h2>
+        <div className="grid gap-6" data-animate>
           {experiences.map((exp, index) => (
-            <Card key={index} className="glass">
+            <Card key={index} className="glass transform transition-all duration-500 hover:scale-[1.02]" data-stagger>
               <CardHeader>
                 <CardTitle className="text-xl mb-1">{exp.title}</CardTitle>
                 <div className="text-sm text-muted-foreground">

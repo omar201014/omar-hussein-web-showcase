@@ -1,9 +1,12 @@
-
 import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import BackgroundPattern from './BackgroundPattern';
+import { useTypewriter } from '@/hooks/useTypewriter';
 
 const HeroSection = () => {
+  const typedName = useTypewriter("Omar Hussein", 150);
+  const typedRole = useTypewriter("Web Developer", 150);
+
   return (
     <section className="min-h-screen flex flex-col justify-center items-start p-8 md:p-16 relative overflow-hidden">
       <BackgroundPattern />
@@ -11,25 +14,27 @@ const HeroSection = () => {
       <div className="container mx-auto max-w-6xl relative">
         <div className="space-y-6">
           <h1 
-            className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent transform transition-all duration-700 animate-fade-in"
+            className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-fade-in"
           >
-            Omar Hussein
+            {typedName}
           </h1>
           
           <h2 
-            className="text-2xl md:text-3xl text-primary font-semibold transform transition-all duration-700 delay-100 animate-fade-in"
+            className="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-fade-in delay-300"
           >
-            Web Developer
+            {typedRole}
           </h2>
           
           <p 
-            className="text-muted-foreground/90 max-w-2xl text-lg leading-relaxed glass p-6 transform transition-all duration-700 delay-200 animate-fade-in"
+            className="text-muted-foreground/90 max-w-2xl text-lg leading-relaxed glass p-6 animate-fade-in delay-500"
+            data-stagger
           >
             With over 2 years of WordPress expertise, I've designed and developed 20+ websites for diverse industries, including healthcare, travel, and e-commerce. My work focuses on creating responsive, conversion-driven layouts, integrating CRMs like Bitrix24 for streamlined workflows, and collaborating with cross-functional teams to align design with business goals. This approach has consistently improved client engagement by 30%+ and accelerated project delivery timelines.
           </p>
           
           <div 
-            className="flex flex-wrap gap-4 pt-4 transform transition-all duration-700 delay-300 animate-fade-in"
+            className="flex flex-wrap gap-4 pt-4"
+            data-stagger
           >
             <Button 
               variant="outline" 
@@ -55,7 +60,8 @@ const HeroSection = () => {
           </div>
 
           <div 
-            className="flex gap-4 pt-2 transform transition-all duration-700 delay-400 animate-fade-in"
+            className="flex gap-4 pt-2"
+            data-stagger
           >
             <a 
               href="https://github.com/omar201014" 

@@ -8,6 +8,13 @@ export const useScrollAnimation = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-in');
+            
+            // Add stagger effect to child elements
+            const children = entry.target.querySelectorAll('[data-stagger]');
+            children.forEach((child, index) => {
+              (child as HTMLElement).style.animationDelay = `${index * 0.2}s`;
+              child.classList.add('animate-in');
+            });
           }
         });
       },
