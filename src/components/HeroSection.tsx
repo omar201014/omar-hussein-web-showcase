@@ -16,13 +16,13 @@ const HeroSection = () => {
           <h1 
             className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-fade-in"
           >
-            {typedName}
+            {typedName || "O"}
           </h1>
           
           <h2 
             className="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-fade-in delay-300"
           >
-            {typedRole}
+            {typedRole || "W"}
           </h2>
           
           <p 
