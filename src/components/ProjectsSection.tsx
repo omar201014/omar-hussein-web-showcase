@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
@@ -79,6 +80,11 @@ const ProjectsSection = () => {
                     src={project.image} 
                     alt={project.title}
                     className="rounded-md object-cover w-full h-full"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      console.log(`Image failed to load: ${target.src}`);
+                      target.src = "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d";
+                    }}
                   />
                 </AspectRatio>
                 <CardDescription>{project.description}</CardDescription>
