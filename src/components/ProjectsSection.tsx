@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
-import { Link, ExternalLink, FileVideo, Image } from "lucide-react";
+import { Link, ExternalLink } from "lucide-react";
 
 interface Project {
   title: string;
@@ -16,44 +16,44 @@ const ProjectsSection = () => {
     {
       title: "Dawenha.store",
       description: "Rebuilt Dawenha.net with WordPress for streamlined CMS functionality.",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d", // Replace with your image
-      siteLink: "https://dawenha.store",
-      demoLink: "https://demo.dawenha.store", // Replace with your demo link
+      image: "/lovable-uploads/71b099fb-a972-4875-aaaa-56da84e54706.png",
+      siteLink: "https://drive.google.com/file/d/16XVFU601uSs25OL3eeAZVtuRbZma3s4r/view",
+      demoLink: "https://drive.google.com/file/d/16XVFU601uSs25OL3eeAZVtuRbZma3s4r/view",
     },
     {
       title: "As Clinic",
       description: "UAE's premier dental care platform, offering comprehensive services.",
       image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
       siteLink: "https://asclinic.ae",
-      demoLink: "https://demo.asclinic.ae", // Replace with your demo link
+      demoLink: "https://demo.asclinic.ae",
     },
     {
       title: "FARBARY",
       description: "Luxury travel agency specializing in bespoke 5-star experiences.",
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
       siteLink: "https://farbary.com",
-      demoLink: "https://demo.farbary.com", // Replace with your demo link
+      demoLink: "https://demo.farbary.com",
     },
     {
       title: "Leaders Institute",
       description: "Delivered tailored learning solutions in AI, Business, and English.",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
       siteLink: "https://leaders-institute.com",
-      demoLink: "https://demo.leaders-institute.com", // Replace with your demo link
+      demoLink: "https://demo.leaders-institute.com",
     },
     {
       title: "Primal Fitness UAE",
       description: "Fitness hub offering personalized wellness programs for individuals/businesses.",
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
       siteLink: "https://primalfitness.ae",
-      demoLink: "https://demo.primalfitness.ae", // Replace with your demo link
+      demoLink: "https://demo.primalfitness.ae",
     },
     {
       title: "Arcave Interior Design",
       description: "Abu Dhabi-based commercial interior design studio for clinics, offices, and cafes.",
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
       siteLink: "https://arcave.ae",
-      demoLink: "https://demo.arcave.ae", // Replace with your demo link
+      demoLink: "https://demo.arcave.ae",
     }
   ];
 
