@@ -17,7 +17,7 @@ const ProjectsSection = () => {
     {
       title: "Dawenha.store",
       description: "Rebuilt Dawenha.net with WordPress for streamlined CMS functionality.",
-      image: "/lovable-uploads/dawenha store.webp",
+      image: "lovable-uploads/dawenha store.webp",
       siteLink: "https://drive.google.com/file/d/16XVFU601uSs25OL3eeAZVtuRbZma3s4r/view",
       demoLink: "https://drive.google.com/file/d/16XVFU601uSs25OL3eeAZVtuRbZma3s4r/view",
     },
