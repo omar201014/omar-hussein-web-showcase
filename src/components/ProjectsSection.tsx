@@ -102,10 +102,10 @@ const ProjectsSection = () => {
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          className="text-white hover:text-primary hover:bg-black/50 rounded-full h-20 w-20 animate-pulse hover:animate-none"
+                          className="text-white hover:text-primary hover:bg-black/50 rounded-full h-28 w-28 animate-pulse hover:animate-none"
                           onClick={() => setOpenVideo(project.video)}
                         >
-                          <PlayCircle className="h-16 w-16" />
+                          <PlayCircle className="h-24 w-24" />
                           <span className="sr-only">Play video</span>
                         </Button>
                       </div>
@@ -120,19 +120,15 @@ const ProjectsSection = () => {
                       Visit Site
                     </a>
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    onClick={project.video ? () => setOpenVideo(project.video) : undefined}
-                    asChild={!project.video}
-                  >
+                  <Button variant="outline" size="sm" asChild>
                     {project.video ? (
-                      <>
-                        <span>
-                          <PlayCircle className="mr-2" />
-                          Live Demo
-                        </span>
-                      </>
+                      <a onClick={(e) => {
+                        e.preventDefault();
+                        setOpenVideo(project.video);
+                      }} href="#" className="flex items-center">
+                        <ExternalLink className="mr-2" />
+                        Live Demo
+                      </a>
                     ) : (
                       <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="mr-2" />
@@ -153,7 +149,8 @@ const ProjectsSection = () => {
             <video 
               controls
               className="w-full h-full"
-              preload="metadata"
+              preload="none"
+              poster={projects.find(p => p.video === openVideo)?.image}
             >
               <source src={openVideo} type="video/mp4" />
               Your browser does not support the video tag.
