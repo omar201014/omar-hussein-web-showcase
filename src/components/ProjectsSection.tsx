@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -37,7 +36,7 @@ const ProjectsSection = () => {
     {
       title: "FARBARY",
       description: "Luxury travel agency specializing in bespoke 5-star experiences.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+      image: "lovable-uploads/Farbary Travel & Tourism – Luxury Trips 5-Star Services.webp",
       video: "lovable-uploads/Farbary showcase.mp4",
       siteLink: "https://farbary.com",
       demoLink: "https://demo.farbary.com",
