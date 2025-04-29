@@ -98,14 +98,14 @@ const ProjectsSection = () => {
                       }}
                     />
                     {project.video && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 hover:opacity-100 transition-opacity">
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20">
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          className="text-white hover:text-primary hover:bg-black/50 rounded-full h-16 w-16"
+                          className="text-white hover:text-primary hover:bg-black/50 rounded-full h-20 w-20 animate-pulse hover:animate-none"
                           onClick={() => setOpenVideo(project.video)}
                         >
-                          <PlayCircle className="h-12 w-12" />
+                          <PlayCircle className="h-16 w-16" />
                           <span className="sr-only">Play video</span>
                         </Button>
                       </div>
@@ -120,11 +120,25 @@ const ProjectsSection = () => {
                       Visit Site
                     </a>
                   </Button>
-                  <Button variant="outline" size="sm" asChild>
-                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="mr-2" />
-                      Live Demo
-                    </a>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={project.video ? () => setOpenVideo(project.video) : undefined}
+                    asChild={!project.video}
+                  >
+                    {project.video ? (
+                      <>
+                        <span>
+                          <PlayCircle className="mr-2" />
+                          Live Demo
+                        </span>
+                      </>
+                    ) : (
+                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="mr-2" />
+                        Live Demo
+                      </a>
+                    )}
                   </Button>
                 </div>
               </CardContent>
@@ -137,10 +151,9 @@ const ProjectsSection = () => {
         <DialogContent className="max-w-4xl p-0 bg-black overflow-hidden">
           {openVideo && (
             <video 
-              autoPlay 
               controls
               className="w-full h-full"
-              onCanPlayThrough={() => console.log("Video ready to play")}
+              preload="metadata"
             >
               <source src={openVideo} type="video/mp4" />
               Your browser does not support the video tag.
