@@ -3,7 +3,8 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
-import { Link, ExternalLink } from "lucide-react";
+import { Link, ExternalLink, PlayCircle } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface Project {
   title: string;
@@ -15,7 +16,7 @@ interface Project {
 }
 
 const ProjectsSection = () => {
-  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [openVideo, setOpenVideo] = useState<string | null>(null);
 
   const projects: Project[] = [
     {
@@ -66,14 +67,6 @@ const ProjectsSection = () => {
     }
   ];
 
-  const handleMouseEnter = (title: string) => {
-    setHoveredProject(title);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredProject(null);
-  };
-
   return (
     <section className="py-16 px-4 bg-secondary/50" id="projects">
       <div className="container mx-auto">
@@ -92,32 +85,30 @@ const ProjectsSection = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <AspectRatio ratio={16/9}>
-                  <div 
-                    className="relative w-full h-full rounded-md overflow-hidden"
-                    onMouseEnter={() => project.video && handleMouseEnter(project.title)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {hoveredProject === project.title && project.video ? (
-                      <video 
-                        autoPlay 
-                        muted 
-                        loop 
-                        className="absolute inset-0 w-full h-full object-cover"
-                      >
-                        <source src={project.video} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                    ) : (
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          console.log(`Image failed to load: ${target.src}`);
-                          target.src = "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d";
-                        }}
-                      />
+                  <div className="relative w-full h-full rounded-md overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        console.log(`Image failed to load: ${target.src}`);
+                        target.src = "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d";
+                      }}
+                    />
+                    {project.video && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 hover:opacity-100 transition-opacity">
+                        <Button 
+                          variant="ghost" 
+                          size="icon" 
+                          className="text-white hover:text-primary hover:bg-black/50 rounded-full h-16 w-16"
+                          onClick={() => setOpenVideo(project.video)}
+                        >
+                          <PlayCircle className="h-12 w-12" />
+                          <span className="sr-only">Play video</span>
+                        </Button>
+                      </div>
                     )}
                   </div>
                 </AspectRatio>
@@ -141,6 +132,22 @@ const ProjectsSection = () => {
           ))}
         </div>
       </div>
+
+      <Dialog open={!!openVideo} onOpenChange={() => setOpenVideo(null)}>
+        <DialogContent className="max-w-4xl p-0 bg-black overflow-hidden">
+          {openVideo && (
+            <video 
+              autoPlay 
+              controls
+              className="w-full h-full"
+              onCanPlayThrough={() => console.log("Video ready to play")}
+            >
+              <source src={openVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
