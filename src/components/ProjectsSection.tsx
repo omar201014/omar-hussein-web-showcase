@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
@@ -8,11 +9,14 @@ interface Project {
   title: string;
   description: string;
   image: string;
+  video?: string;
   siteLink: string;
   demoLink: string;
 }
 
 const ProjectsSection = () => {
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+
   const projects: Project[] = [
     {
       title: "Dawenha.store",
@@ -24,7 +28,8 @@ const ProjectsSection = () => {
     {
       title: "As Clinic",
       description: "UAE's premier dental care platform, offering comprehensive services.",
-      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
+      image: "lovable-uploads/As Clinic.webp",
+      video: "lovable-uploads/showcase AS.mp4",
       siteLink: "https://asclinic.ae",
       demoLink: "https://demo.asclinic.ae",
     },
@@ -32,6 +37,7 @@ const ProjectsSection = () => {
       title: "FARBARY",
       description: "Luxury travel agency specializing in bespoke 5-star experiences.",
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+      video: "lovable-uploads/Farbary showcase.mp4",
       siteLink: "https://farbary.com",
       demoLink: "https://demo.farbary.com",
     },
@@ -39,6 +45,7 @@ const ProjectsSection = () => {
       title: "Leaders Institute",
       description: "Delivered tailored learning solutions in AI, Business, and English.",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+      video: "lovable-uploads/AlQada showcase.mp4",
       siteLink: "https://leaders-institute.com",
       demoLink: "https://demo.leaders-institute.com",
     },
@@ -53,10 +60,19 @@ const ProjectsSection = () => {
       title: "Arcave Interior Design",
       description: "Abu Dhabi-based commercial interior design studio for clinics, offices, and cafes.",
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+      video: "lovable-uploads/Arcave showcase.mp4",
       siteLink: "https://arcave.ae",
       demoLink: "https://demo.arcave.ae",
     }
   ];
+
+  const handleMouseEnter = (title: string) => {
+    setHoveredProject(title);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredProject(null);
+  };
 
   return (
     <section className="py-16 px-4 bg-secondary/50" id="projects">
@@ -76,16 +92,34 @@ const ProjectsSection = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <AspectRatio ratio={16/9}>
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="rounded-md object-cover w-full h-full"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      console.log(`Image failed to load: ${target.src}`);
-                      target.src = "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d";
-                    }}
-                  />
+                  <div 
+                    className="relative w-full h-full rounded-md overflow-hidden"
+                    onMouseEnter={() => project.video && handleMouseEnter(project.title)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {hoveredProject === project.title && project.video ? (
+                      <video 
+                        autoPlay 
+                        muted 
+                        loop 
+                        className="absolute inset-0 w-full h-full object-cover"
+                      >
+                        <source src={project.video} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          console.log(`Image failed to load: ${target.src}`);
+                          target.src = "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d";
+                        }}
+                      />
+                    )}
+                  </div>
                 </AspectRatio>
                 <CardDescription>{project.description}</CardDescription>
                 <div className="flex gap-2">
