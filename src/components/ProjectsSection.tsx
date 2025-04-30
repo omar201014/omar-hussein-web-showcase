@@ -42,12 +42,12 @@ const ProjectsSection = () => {
       demoLink: "https://demo.farbary.com",
     },
     {
-      title: "Leaders Institute",
+      title: "Al Qada Al Mutamayzoon Institute",
       description: "Delivered tailored learning solutions in AI, Business, and English.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+      image: "lovable-uploads/Al Qada Al Mutamayzoon Institute Certified Language Courses & AI Learning for Kids.webp",
       video: "lovable-uploads/AlQada showcase.mp4",
-      siteLink: "https://leaders-institute.com",
-      demoLink: "https://demo.leaders-institute.com",
+      siteLink: "https://leadersinstitutes.com",
+      demoLink: "https://demo.leadersinstitutes.com",
     },
     {
       title: "Primal Fitness UAE",
