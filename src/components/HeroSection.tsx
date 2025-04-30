@@ -1,7 +1,6 @@
 import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import BackgroundPattern from './BackgroundPattern';
-import ParticlesBackground from './ParticlesBackground';
 import { useTypewriter } from '@/hooks/useTypewriter';
 
 const HeroSection = () => {
@@ -11,7 +10,6 @@ const HeroSection = () => {
   return (
     <section className="min-h-screen flex flex-col justify-center items-start p-8 md:p-16 relative overflow-hidden">
       <BackgroundPattern />
-      <ParticlesBackground />
       
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="space-y-6">
