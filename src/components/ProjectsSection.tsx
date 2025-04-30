@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -59,9 +60,9 @@ const ProjectsSection = () => {
     {
       title: "Arcave Interior Design",
       description: "Abu Dhabi-based commercial interior design studio for clinics, offices, and cafes.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+      image: "lovable-uploads/arcave.webp",
       video: "lovable-uploads/Arcave showcase.mp4",
-      siteLink: "https://arcave.ae",
+      siteLink: "https://design.arcave.ae",
       demoLink: "https://demo.arcave.ae",
     }
   ];
