@@ -1,11 +1,12 @@
+
 import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import BackgroundPattern from './BackgroundPattern';
 import { useTypewriter } from '@/hooks/useTypewriter';
 
 const HeroSection = () => {
-  const typedName = useTypewriter("Omar Hussein", 150);
-  const typedRole = useTypewriter("Web Developer", 150);
+  const typedName = useTypewriter("Omar Hussein", 180);
+  const typedRole = useTypewriter("Web Developer", 180);
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-start p-8 md:p-16 relative overflow-hidden">
