@@ -3,7 +3,6 @@ import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import BackgroundPattern from './BackgroundPattern';
 import { useTypewriter } from '@/hooks/useTypewriter';
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const HeroSection = () => {
   const typedName = useTypewriter("Omar Hussein", 180);
@@ -27,13 +26,13 @@ const HeroSection = () => {
             <h1 
               className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-fade-in hover:scale-105 transition-transform duration-300"
             >
-              {typedName || "Omar Hussein"}
+              {typedName ? typedName : "Omar Hussein"}
             </h1>
             
             <h2 
               className="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-fade-in delay-300 hover:scale-105 transition-transform duration-300"
             >
-              {typedRole || "Web Developer"}
+              {typedRole ? typedRole : "Web Developer"}
             </h2>
           </div>
         </div>
