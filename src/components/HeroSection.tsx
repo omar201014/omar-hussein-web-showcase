@@ -15,14 +15,13 @@ const HeroSection = () => {
       
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-8 mb-8" data-stagger>
-          <Avatar className="w-32 h-32 border-4 border-white bg-white shadow-xl animate-fade-in hover:scale-105 transition-transform duration-500">
-            <AvatarImage 
+          <div className="w-32 h-32 border-4 border-white bg-white shadow-xl animate-fade-in hover:scale-105 transition-transform duration-500 rounded-full overflow-hidden">
+            <img 
               src="/lovable-uploads/MyphotoHD suit enhanced.webp" 
               alt="Omar Hussein" 
-              className="object-cover"
+              className="w-full h-full object-cover"
             />
-            <AvatarFallback className="text-3xl font-bold">OH</AvatarFallback>
-          </Avatar>
+          </div>
           
           <div className="space-y-2">
             <h1 
