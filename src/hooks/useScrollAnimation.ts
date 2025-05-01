@@ -7,24 +7,25 @@ export const useScrollAnimation = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Add a slight delay before showing the element
+            // Delay the animation start to make it more noticeable
             setTimeout(() => {
               entry.target.classList.add('animate-in');
               
-              // Add stagger effect to child elements with increased delay
+              // Enhanced stagger effect for child elements
               const children = entry.target.querySelectorAll('[data-stagger]');
               children.forEach((child, index) => {
-                // Increase stagger delay between elements
-                (child as HTMLElement).style.animationDelay = `${0.3 + (index * 0.3)}s`;
+                // Create a more significant staggered delay with easing
+                (child as HTMLElement).style.transitionDelay = `${0.4 + (index * 0.2)}s`;
+                (child as HTMLElement).style.transitionDuration = '1.2s';
                 child.classList.add('animate-in');
               });
-            }, 100);
+            }, 200);
           }
         });
       },
       {
-        threshold: 0.15, // Slightly increase threshold
-        rootMargin: '20px', // Trigger animation earlier
+        threshold: 0.1, // Lower threshold to start animation earlier
+        rootMargin: '0px 0px -100px 0px', // Start animation before element is fully in view
       }
     );
 
