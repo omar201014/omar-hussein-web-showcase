@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -39,13 +40,13 @@
 
 .fade-in {
   opacity: 0;
-  animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(-50px); /* Reversed: now coming from above */
   }
   to {
     opacity: 1;
@@ -55,7 +56,7 @@
 
 .glass {
   @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
 }
 
@@ -65,12 +66,12 @@
   transform: translateY(-2px);
 }
 
-/* Enhanced animation styles */
+/* Enhanced animation styles with reversed direction */
 [data-animate] {
   opacity: 0;
-  transform: translateY(60px);
-  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1), 
-              transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(-60px); /* Coming from above instead of below */
+  transition: opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1), 
+              transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
@@ -81,9 +82,9 @@
 
 [data-stagger] {
   opacity: 0;
-  transform: translateY(50px) scale(0.97);
-  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(-50px) scale(0.97); /* Coming from above */
+  transition: opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
@@ -93,19 +94,19 @@
 }
 
 .animate-fade-in {
-  animation: enhancedFadeIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: enhancedFadeIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes enhancedFadeIn {
   0% {
     opacity: 0;
-    transform: translateY(60px) scale(0.96);
+    transform: translateY(-60px) scale(0.96); /* Coming from above */
   }
   70% {
-    transform: translateY(-8px) scale(1.01);
+    transform: translateY(8px) scale(1.01); /* Slight overshoot */
   }
   85% {
-    transform: translateY(4px) scale(1);
+    transform: translateY(-4px) scale(1);
   }
   100% {
     opacity: 1;
@@ -124,32 +125,45 @@
 /* Card animation enhancement */
 .glass {
   @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
   transform: translateY(0);
-  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .glass:hover {
   @apply bg-white/15;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   transform: translateY(-6px) scale(1.02);
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Card entrance animation */
 [data-animate] .glass,
 .glass[data-stagger] {
   opacity: 0;
-  transform: translateY(40px) scale(0.95);
+  transform: translateY(-40px) scale(0.95); /* Coming from above */
 }
 
 [data-animate].animate-in .glass,
 .glass[data-stagger].animate-in {
   opacity: 1;
   transform: translateY(0) scale(1);
-  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Project cards sequential animation */
+.project-card {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @keyframes pulse {

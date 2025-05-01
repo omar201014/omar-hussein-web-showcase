@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -77,8 +76,7 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <Card 
               key={index} 
-              className="glass transform transition-all duration-500 hover:scale-105 hover:rotate-1" 
-              data-stagger
+              className="glass project-card transform transition-all duration-500 hover:scale-105 hover:rotate-1" 
             >
               <CardHeader>
                 <CardTitle className="text-xl">{project.title}</CardTitle>
