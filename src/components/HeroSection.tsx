@@ -91,11 +91,11 @@ const HeroSection = () => {
           
           {/* Photo Column */}
           <div className="md:w-1/3 flex justify-center md:justify-end animate-fade-in">
-            <div className="relative w-64 h-[300px] bg-white rounded-full overflow-hidden shadow-xl hover:scale-105 transition-all duration-500">
+            <div className="relative rounded-full w-64 h-64 border-4 border-white/30 overflow-hidden bg-white/10 backdrop-blur-lg shadow-xl hover:scale-105 transition-all duration-500">
               <img 
-                src="lovable-uploads/MyphotoHD suit enhanced.webp" 
+                src="/lovable-uploads/MyphotoHD suit enhanced.webp" 
                 alt="Omar Hussein" 
-                className="w-full h-full object-contain"
+                className="object-cover w-full h-full"
               />
               <div className="absolute inset-0 ring-4 ring-purple-500/30 rounded-full"></div>
             </div>
