@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -50,11 +51,12 @@ const ProjectsSection = () => {
       demoLink: "https://demo.leadersinstitutes.com",
     },
     {
-      title: "Primal Fitness UAE",
-      description: "Fitness hub offering personalized wellness programs for individuals/businesses.",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
-      siteLink: "https://primalfitness.ae",
-      demoLink: "https://demo.primalfitness.ae",
+      title: "Eng. Abdullah Taj",
+      description: "Personal portfolio website for a professional civil engineer showcasing expertise and projects.",
+      image: "lovable-uploads/abdullahtaj.com_.webp",
+      video: "lovable-uploads/Eng Abdullah website showcase.mp4",
+      siteLink: "https://abdullahtaj.com",
+      demoLink: "https://abdullahtaj.com",
     },
     {
       title: "Arcave Interior Design",
