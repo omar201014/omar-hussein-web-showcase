@@ -95,7 +95,8 @@ const HeroSection = () => {
               <img 
                 src="lovable-uploads/MyphotoHD suit enhanced.webp" 
                 alt="Omar Hussein" 
-                className="object-cover w-full h-full"
+                className="object-contain w-full h-full"
+                style={{ backgroundColor: "white", height: "300px" }}
               />
               <div className="absolute inset-0 ring-4 ring-purple-500/30 rounded-full"></div>
             </div>
