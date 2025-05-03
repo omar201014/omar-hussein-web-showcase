@@ -1,5 +1,5 @@
 
-import { Github, Linkedin, Mail, MapPin, Download, ChevronDown } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Download, ChevronDown, Phone } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import BackgroundPattern from './BackgroundPattern';
 import { useTypewriter } from '@/hooks/useTypewriter';
@@ -57,29 +57,46 @@ const HeroSection = () => {
               >
                 <MapPin className="h-5 w-5 text-purple-300" /> Alexandria, Egypt
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow"
+              <a 
+                href="mailto:omar.hussein201014@outlook.com"
+                className="inline-block"
               >
-                <Mail className="h-5 w-5 text-purple-300" /> omar_hussein201014@hotmail.com
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow"
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow"
+                >
+                  <Mail className="h-5 w-5 text-purple-300" /> omar.hussein201014@outlook.com
+                </Button>
+              </a>
+              <a 
+                href="tel:+201111609093"
+                className="inline-block"
               >
-                (+20)11 116-09093
-              </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow"
+                >
+                  <Phone className="h-5 w-5 text-purple-300" /> (+20)11 116-09093
+                </Button>
+              </a>
             </div>
 
             {/* Resume Download Button */}
             <div className="pt-2">
-              <Button 
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300"
+              <a 
+                href="https://drive.google.com/file/d/19-3BaZZDfB4Wk9XeNCovSc7gbzwE7_Rp/view?usp=drive_link" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block"
               >
-                <Download className="h-5 w-5 mr-2" /> Download Resume
-              </Button>
+                <Button 
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  <Download className="h-5 w-5 mr-2" /> Download Resume
+                </Button>
+              </a>
             </div>
 
             {/* Social Links */}
