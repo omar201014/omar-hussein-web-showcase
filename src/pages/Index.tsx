@@ -12,16 +12,16 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <HeroSection />
-      <div data-animate>
+      <div className="animate-in" data-animate>
         <ExperienceSection />
       </div>
-      <div data-animate>
+      <div className="animate-in" data-animate>
         <ProjectsSection />
       </div>
-      <div data-animate>
+      <div className="animate-in" data-animate>
         <SkillsSection />
       </div>
-      <div data-animate>
+      <div className="animate-in" data-animate>
         <EducationSection />
       </div>
     </div>

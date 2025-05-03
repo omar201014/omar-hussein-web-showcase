@@ -30,15 +30,12 @@ const HeroSection = () => {
             
             <p 
               className="text-muted-foreground/90 max-w-2xl text-lg leading-relaxed glass p-6 animate-fade-in delay-500 hover:bg-white/20 transition-colors duration-300 rounded-xl backdrop-blur-lg shadow-lg"
-              data-stagger
             >
               With over 2 years of WordPress expertise, I've designed and developed 20+ websites for diverse industries, including healthcare, travel, and e-commerce. My work focuses on creating responsive, conversion-driven layouts, integrating CRMs like Bitrix24 for streamlined workflows, and collaborating with cross-functional teams to align design with business goals. This approach has consistently improved client engagement by 30%+ and accelerated project delivery timelines.
             </p>
             
-            <div 
-              className="flex flex-wrap gap-4 pt-4"
-              data-stagger
-            >
+            {/* Contact Details */}
+            <div className="flex flex-wrap gap-4 pt-4 opacity-100 visible">
               <Button 
                 variant="outline" 
                 size="lg" 
@@ -62,10 +59,8 @@ const HeroSection = () => {
               </Button>
             </div>
 
-            <div 
-              className="flex gap-4 pt-2"
-              data-stagger
-            >
+            {/* Social Links */}
+            <div className="flex gap-4 pt-2 opacity-100 visible">
               <a 
                 href="https://github.com/omar201014" 
                 target="_blank" 
