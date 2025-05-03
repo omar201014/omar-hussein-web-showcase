@@ -36,6 +36,24 @@
     background: radial-gradient(circle at top, hsl(267 35% 12%), hsl(267 35% 4%));
     min-height: 100vh;
   }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-background/30;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/40 rounded-full backdrop-blur-xl;
+    transition: all 0.3s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/60;
+  }
 }
 
 .fade-in {
@@ -56,14 +74,14 @@
 
 .glass {
   @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl;
-  transition: all 0.5s ease;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
 }
 
 .glass:hover {
   @apply bg-white/15;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.01);
 }
 
 /* Enhanced animation styles with reversed direction */
@@ -133,7 +151,7 @@
 
 .glass:hover {
   @apply bg-white/15;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 0 0 2px rgba(255, 255, 255, 0.1);
   transform: translateY(-6px) scale(1.02);
   transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -180,4 +198,144 @@
 
 .hover-pulse:hover {
   animation: pulse 1.5s infinite;
+}
+
+/* Enhanced Hover Effects */
+.hover-float {
+  transition: transform 0.3s ease;
+}
+
+.hover-float:hover {
+  transform: translateY(-8px);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px 2px rgba(162, 89, 255, 0.4);
+}
+
+/* Gradient Text Animations */
+.text-gradient {
+  @apply bg-gradient-to-r from-purple-400 via-pink-500 to-purple-500 bg-clip-text text-transparent;
+  background-size: 200% auto;
+  animation: gradientFlow 8s ease infinite;
+}
+
+.text-gradient-blue {
+  @apply bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+  background-size: 200% auto;
+  animation: gradientFlow 8s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+/* Button Enhancements */
+.button-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-glow:after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  animation: glowSweep 3s linear infinite;
+}
+
+@keyframes glowSweep {
+  0% { transform: rotate(45deg) translateX(-100%); }
+  100% { transform: rotate(45deg) translateX(100%); }
+}
+
+/* Image Hover Effects */
+.image-zoom-container {
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.image-zoom {
+  transition: transform 0.7s ease;
+}
+
+.image-zoom:hover {
+  transform: scale(1.08);
+}
+
+/* 3D Card Effect */
+.card-3d {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-3d:hover {
+  transform: rotateX(5deg) rotateY(5deg);
+  box-shadow: 
+    -10px 10px 20px rgba(0, 0, 0, 0.3),
+    10px -10px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Section Dividers */
+.section-divider {
+  position: relative;
+  height: 80px;
+  overflow: hidden;
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 25%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 50%, transparent 50%, transparent 75%, rgba(255, 255, 255, 0.05) 75%);
+  background-size: 20px 20px;
+  transform: skewY(-1.5deg);
+}
+
+/* Custom Cursor for Interactive Elements */
+.custom-cursor {
+  cursor: none;
+  position: relative;
+}
+
+.cursor-dot {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(156, 39, 176, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s;
+}
+
+.cursor-outline {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(156, 39, 176, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.2s ease, width 0.3s ease, height 0.3s ease;
 }
