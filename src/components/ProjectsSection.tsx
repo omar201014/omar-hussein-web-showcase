@@ -44,7 +44,7 @@ const ProjectsSection = () => {
       description: "Luxury travel agency specializing in bespoke 5-star experiences.",
       image: "lovable-uploads/Farbary Travel & Tourism – Luxury Trips 5-Star Services.webp",
       video: "lovable-uploads/Farbary showcase.mp4",
-      siteLink: "https://farbary.com",
+      siteLink: "https://farbary.ae",
       demoLink: "https://demo.farbary.com",
       tech: ["WordPress", "Booking System", "Custom Design"]
     },
