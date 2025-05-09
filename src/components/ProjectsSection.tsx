@@ -23,6 +23,24 @@ const ProjectsSection = () => {
 
   const projects: Project[] = [
     {
+      title: "Escrow Real Estate",
+      description: "Premier real estate platform showcasing luxury properties in the UAE.",
+      image: "lovable-uploads/Escrow website Home.png",
+      video: "lovable-uploads/Escrow demo showcase.mp4",
+      siteLink: "https://escrowrealestate.ae",
+      demoLink: "https://escrowrealestate.ae",
+      tech: ["WordPress", "Property Management", "Custom Design"]
+    },
+    {
+      title: "Primal Fitness",
+      description: "Professional fitness website for training programs and health guidance.",
+      image: "lovable-uploads/Primal fitness website.png",
+      video: "lovable-uploads/Primal fitness demo showcase.mp4",
+      siteLink: "https://primalfitness.ae",
+      demoLink: "https://primalfitness.ae",
+      tech: ["WordPress", "Scheduling System", "Responsive Design"]
+    },
+    {
       title: "Dawenha.store",
       description: "Rebuilt Dawenha.net with WordPress for streamlined CMS functionality.",
       image: "lovable-uploads/dawenha store.webp",
