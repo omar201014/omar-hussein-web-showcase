@@ -1,5 +1,5 @@
 
-import { Github, Linkedin, Mail, MapPin, Download, ChevronDown, Phone } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Download, ChevronDown, Phone, Mouse } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import BackgroundPattern from './BackgroundPattern';
 import { useTypewriter } from '@/hooks/useTypewriter';
@@ -21,6 +21,19 @@ const HeroSection = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToNextSection = () => {
+    // Find the element after the hero section (next section)
+    const nextSection = document.querySelector('.section-divider')?.nextElementSibling;
+    
+    if (nextSection) {
+      // Scroll to the next section with a smooth animation
+      nextSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-start p-8 md:p-16 relative overflow-hidden">
@@ -138,12 +151,16 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - now clickable with mouse icon */}
         <div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center transition-opacity duration-500"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center transition-opacity duration-500 cursor-pointer hover:scale-110"
           style={{ opacity: scrollIndicatorOpacity }}
+          onClick={scrollToNextSection}
         >
-          <span className="text-sm text-purple-300 mb-2">Scroll Down</span>
+          <div className="flex items-center gap-2 mb-2">
+            <Mouse className="h-5 w-5 text-purple-300" />
+            <span className="text-sm text-purple-300">Scroll Down</span>
+          </div>
           <ChevronDown className="h-6 w-6 text-purple-300 animate-bounce" />
         </div>
       </div>
