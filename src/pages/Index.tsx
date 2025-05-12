@@ -1,5 +1,5 @@
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import HeroSection from "@/components/HeroSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -12,22 +12,15 @@ import { Button } from "@/components/ui/button";
 
 const Index = () => {
   useScrollAnimation();
-  const scrollToTopBtnRef = useRef<HTMLButtonElement>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
-      if (scrollToTopBtnRef.current) {
-        if (window.scrollY > 500) {
-          scrollToTopBtnRef.current.classList.add('visible', 'opacity-100');
-          scrollToTopBtnRef.current.classList.remove('invisible', 'opacity-0');
-        } else {
-          scrollToTopBtnRef.current.classList.add('invisible', 'opacity-0');
-          scrollToTopBtnRef.current.classList.remove('visible', 'opacity-100');
-        }
-      }
+      setIsScrolled(window.scrollY > 500);
     };
     
-    window.addEventListener('scroll', handleScroll);
+    // Use passive event listener for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
@@ -65,10 +58,11 @@ const Index = () => {
         <Footer />
       </div>
       
-      {/* Scroll to top button */}
+      {/* Scroll to top button - Using React state instead of ref manipulation */}
       <Button
-        ref={scrollToTopBtnRef}
-        className="fixed bottom-6 right-6 z-50 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white w-12 h-12 flex items-center justify-center invisible opacity-0 transition-all duration-300 hover:scale-110 shadow-lg"
+        className={`fixed bottom-6 right-6 z-50 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white w-12 h-12 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg ${
+          isScrolled ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
         onClick={scrollToTop}
       >
         <ChevronUp className="h-6 w-6" />

@@ -1,7 +1,8 @@
 
 import { Copyright } from "lucide-react";
+import { memo } from "react";
 
-const Footer = () => {
+const Footer = memo(() => {
   const currentYear = new Date().getFullYear();
   
   return (
@@ -23,6 +24,8 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = "Footer";
 
 export default Footer;
