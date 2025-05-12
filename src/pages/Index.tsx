@@ -5,6 +5,7 @@ import ExperienceSection from "@/components/ExperienceSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import EducationSection from "@/components/EducationSection";
+import Footer from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -58,6 +59,10 @@ const Index = () => {
       
       <div className="animate-in" data-animate>
         <EducationSection />
+      </div>
+      
+      <div className="animate-in" data-animate>
+        <Footer />
       </div>
       
       {/* Scroll to top button */}
