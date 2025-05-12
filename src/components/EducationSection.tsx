@@ -9,13 +9,13 @@ const EducationSection = () => {
       institution: "Information Technology Institute (ITI)",
       period: "03/2023 — 06/2023",
       description: "Building web Application with Content Management Systems, along with utilizing the necessary soft skills needed for web developing market.",
-      logo: "/lovable-uploads/logo-iti.png"
+      logo: "/omar-hussein-web-showcase/lovable-uploads/logo-iti.png"
     },
     {
       title: "Bachelor's degree in Communication Engineering",
       institution: "Alexandria Higher Institute of Engineering & Technology",
       period: "09/2013 — 06/2018",
-      logo: "/lovable-uploads/logo-aiet.png"
+      logo: "/omar-hussein-web-showcase/lovable-uploads/logo-aiet.png"
     }
   ];
 
