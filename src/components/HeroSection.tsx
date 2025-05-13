@@ -1,9 +1,10 @@
 
-import { Github, Linkedin, Mail, MapPin, Download, ChevronDown, Phone, Mouse } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Download, ChevronDown, Mouse, Phone } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import BackgroundPattern from './BackgroundPattern';
 import { useTypewriter } from '@/hooks/useTypewriter';
 import { useState, useEffect } from 'react';
+import { ThemeToggle } from './ThemeToggle';
 
 const HeroSection = () => {
   const typedName = useTypewriter("Omar Hussein", 180);
@@ -38,6 +39,23 @@ const HeroSection = () => {
   return (
     <section className="min-h-screen flex flex-col justify-center items-start p-8 md:p-16 relative overflow-hidden">
       <BackgroundPattern />
+      
+      {/* Header with Logo and Theme Toggle */}
+      <div className="absolute top-8 left-8 right-8 z-20 flex justify-between items-center">
+        <div>
+          <img 
+            src="lovable-uploads/logo white.png" 
+            alt="Omar Hussein Logo" 
+            className="h-12 md:h-16 block dark:hidden" 
+          />
+          <img 
+            src="lovable-uploads/Logo Dark.png" 
+            alt="Omar Hussein Logo" 
+            className="h-12 md:h-16 hidden dark:block" 
+          />
+        </div>
+        <ThemeToggle />
+      </div>
       
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="flex flex-col-reverse md:flex-row gap-8 items-center md:items-start">
