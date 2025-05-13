@@ -3,6 +3,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
+import compression from "vite-plugin-compression";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -19,6 +20,8 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === 'development' &&
     componentTagger(),
+    // Add compression for production builds
+    mode === 'production' && compression()
   ].filter(Boolean),
   resolve: {
     alias: {
@@ -46,7 +49,10 @@ export default defineConfig(({ mode }) => ({
         manualChunks: {
           react: ['react', 'react-dom'],
           lucide: ['lucide-react'],
-          shadcn: ['@radix-ui/react-dialog', '@radix-ui/react-aspect-ratio'],
+          shadcn: [
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-aspect-ratio'
+          ],
         },
       },
     },
