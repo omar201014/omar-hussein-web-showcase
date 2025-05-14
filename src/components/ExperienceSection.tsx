@@ -28,7 +28,7 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <section className="py-12 md:py-16 px-4" id="experience">
+    <section className="py-12 md:py-16 px-2 sm:px-4" id="experience">
       <div className="container mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold mb-2 text-center bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
           Experience

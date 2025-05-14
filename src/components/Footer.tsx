@@ -6,7 +6,7 @@ const Footer = memo(() => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="py-8 px-4 bg-background border-t border-white/10">
+    <footer className="py-8 px-2 sm:px-4 bg-background border-t border-white/10">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-2 text-sm text-muted-foreground">

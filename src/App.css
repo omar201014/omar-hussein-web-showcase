@@ -70,3 +70,10 @@
     opacity: 0;
   }
 }
+
+/* Add support for extra small screens */
+@media (min-width: 475px) {
+  .xs\:flex-row {
+    flex-direction: row;
+  }
+}

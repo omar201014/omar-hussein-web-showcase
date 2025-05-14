@@ -5,6 +5,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Link, ExternalLink, PlayCircle, ArrowRight, Code, Laptop } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Project {
   title: string;
@@ -20,6 +21,7 @@ const ProjectsSection = () => {
   const [openVideo, setOpenVideo] = useState<string | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   const projects: Project[] = [
     {
@@ -96,7 +98,7 @@ const ProjectsSection = () => {
   ];
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || isMobile) return;
     
     const cards = containerRef.current.querySelectorAll('.project-card');
     
@@ -118,7 +120,7 @@ const ProjectsSection = () => {
   };
   
   const handleMouseLeave = () => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || isMobile) return;
     const cards = containerRef.current.querySelectorAll('.project-card');
     cards.forEach((card) => {
       const cardElement = card as HTMLElement;
@@ -128,18 +130,18 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section className="py-16 px-4 bg-secondary/50" id="projects">
+    <section className="py-16 px-2 sm:px-4 bg-secondary/50" id="projects">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-2 text-center bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent animate-fade-in">
           Projects
         </h2>
-        <p className="text-center text-purple-300/80 mb-10 max-w-2xl mx-auto">
+        <p className="text-center text-purple-300/80 mb-10 max-w-2xl mx-auto px-2">
           Explore my recent work crafting responsive, high-performing websites for businesses across different industries
         </p>
         
         <div 
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8" 
           data-animate
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
@@ -151,10 +153,10 @@ const ProjectsSection = () => {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <CardHeader className="pb-2">
-                <CardTitle className="text-xl text-gradient">{project.title}</CardTitle>
+              <CardHeader className="pb-2 p-3 sm:p-4 md:p-6">
+                <CardTitle className="text-lg sm:text-xl text-gradient">{project.title}</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4 pt-0">
+              <CardContent className="space-y-3 sm:space-y-4 pt-0 p-3 sm:p-4 md:p-6">
                 <AspectRatio ratio={16/9} className="image-zoom-container">
                   <div className="relative w-full h-full rounded-md overflow-hidden">
                     <img 
@@ -173,10 +175,10 @@ const ProjectsSection = () => {
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          className="text-white hover:text-primary hover:bg-black/50 rounded-full h-20 w-20 transition-all duration-300 hover:scale-110"
+                          className="text-white hover:text-primary hover:bg-black/50 rounded-full h-16 w-16 sm:h-20 sm:w-20 transition-all duration-300 hover:scale-110"
                           onClick={() => setOpenVideo(project.video)}
                         >
-                          <PlayCircle className="h-16 w-16 drop-shadow-lg" />
+                          <PlayCircle className="h-12 w-12 sm:h-16 sm:w-16 drop-shadow-lg" />
                           <span className="sr-only">Play video</span>
                         </Button>
                       </div>
@@ -184,14 +186,14 @@ const ProjectsSection = () => {
                   </div>
                 </AspectRatio>
                 
-                <CardDescription className="text-sm text-white/80">{project.description}</CardDescription>
+                <CardDescription className="text-xs sm:text-sm text-white/80">{project.description}</CardDescription>
                 
                 {project.tech && (
                   <div className="flex flex-wrap gap-1 mt-2">
                     {project.tech.map((tech, i) => (
                       <span 
                         key={i} 
-                        className="text-xs px-2 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30"
+                        className="text-xs px-2 py-0.5 sm:py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30"
                       >
                         {tech}
                       </span>
@@ -199,28 +201,28 @@ const ProjectsSection = () => {
                   </div>
                 )}
                 
-                <div className="flex gap-2 pt-2">
-                  <Button variant="outline" size="sm" asChild className="group transition-all duration-300 hover:bg-purple-500/20 hover:text-white">
+                <div className="flex flex-col xs:flex-row gap-2 pt-2">
+                  <Button variant="outline" size="sm" asChild className="group transition-all duration-300 hover:bg-purple-500/20 hover:text-white text-xs sm:text-sm">
                     <a href={project.siteLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                      <Link className="mr-1.5 group-hover:rotate-12 transition-transform duration-300" size={16} />
+                      <Link className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
                       <span>Visit Site</span>
-                      <ArrowRight className="ml-1 h-4 w-0 opacity-0 group-hover:w-4 group-hover:opacity-100 transition-all duration-300" />
+                      <ArrowRight className="ml-1 h-3 w-0 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all duration-300" />
                     </a>
                   </Button>
-                  <Button variant="outline" size="sm" asChild className="group transition-all duration-300 hover:bg-pink-500/20 hover:text-white">
+                  <Button variant="outline" size="sm" asChild className="group transition-all duration-300 hover:bg-pink-500/20 hover:text-white text-xs sm:text-sm">
                     {project.video ? (
                       <a onClick={(e) => {
                         e.preventDefault();
                         setOpenVideo(project.video);
                       }} href="#" className="flex items-center">
-                        <Laptop className="mr-1.5 group-hover:rotate-12 transition-transform duration-300" size={16} />
+                        <Laptop className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
                         <span>Live Demo</span>
                       </a>
                     ) : (
                       <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                        <ExternalLink className="mr-1.5 group-hover:rotate-12 transition-transform duration-300" size={16} />
+                        <ExternalLink className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
                         <span>Live Demo</span>
-                        <ArrowRight className="ml-1 h-4 w-0 opacity-0 group-hover:w-4 group-hover:opacity-100 transition-all duration-300" />
+                        <ArrowRight className="ml-1 h-3 w-0 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all duration-300" />
                       </a>
                     )}
                   </Button>
