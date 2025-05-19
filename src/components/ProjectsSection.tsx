@@ -1,3 +1,4 @@
+
 import { useState, useRef } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -192,7 +193,7 @@ const ProjectsSection = () => {
                     {project.tech.map((tech, i) => (
                       <span 
                         key={i} 
-                        className="text-xs px-2 py-0.5 sm:py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30"
+                        className="text-xs px-2 py-0.5 sm:py-1 rounded-full bg-purple-500/20 dark:text-purple-300 text-purple-700 border border-purple-500/30"
                       >
                         {tech}
                       </span>
