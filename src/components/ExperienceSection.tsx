@@ -33,7 +33,7 @@ const ExperienceSection = () => {
         <h2 className="text-2xl md:text-3xl font-bold mb-2 text-center bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
           Experience
         </h2>
-        <p className="text-sm md:text-base text-center text-purple-300/80 mb-6 md:mb-10 max-w-2xl mx-auto">
+        <p className="text-sm md:text-base text-center text-muted-foreground mb-6 md:mb-10 max-w-2xl mx-auto">
           Professional journey leveraging web development expertise across international projects
         </p>
         
@@ -56,18 +56,18 @@ const ExperienceSection = () => {
                 <div className="text-xs md:text-sm text-muted-foreground space-y-1">
                   <div className="flex items-center">
                     <Briefcase className="h-4 w-4 mr-2 text-purple-400 flex-shrink-0" />
-                    <p className="group-hover:text-white/90 transition-colors duration-300">{exp.company}</p>
+                    <p className="group-hover:text-foreground transition-colors duration-300">{exp.company}</p>
                   </div>
                   <div className="flex items-center">
                     <MapPin className="h-4 w-4 mr-2 text-purple-400 flex-shrink-0" />
-                    <p className="group-hover:text-white/90 transition-colors duration-300 break-words">{exp.location}</p>
+                    <p className="group-hover:text-foreground transition-colors duration-300 break-words">{exp.location}</p>
                   </div>
                 </div>
               </CardHeader>
               <CardContent className="pt-0 p-4 md:p-6">
                 <ul className="space-y-2">
                   {exp.achievements.map((achievement, i) => (
-                    <li key={i} className="text-xs md:text-sm text-muted-foreground flex group-hover:text-white/80 transition-colors duration-300">
+                    <li key={i} className="text-xs md:text-sm text-muted-foreground flex group-hover:text-foreground transition-colors duration-300">
                       <ChevronRight className="h-4 w-4 mr-1 text-purple-400 flex-shrink-0 mt-0.5 group-hover:translate-x-1 transition-transform duration-300" /> 
                       <span>{achievement}</span>
                     </li>

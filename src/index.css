@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,7 +16,7 @@
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 267 35% 12%;
     --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted-foreground: 240 5% 54.9%;
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 267 35% 12%;
     --destructive: 0 62.8% 30.6%;
@@ -41,7 +40,7 @@
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted-foreground: 240 5% 84.9%;
     --accent: 240 3.7% 15.9%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
@@ -112,10 +111,30 @@
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
 }
 
+/* Modify glass hover for better text visibility */
 .glass:hover {
   @apply bg-white/15;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   transform: translateY(-4px) scale(1.01);
+}
+
+/* Ensure card text remains visible on hover in dark mode */
+.dark .glass:hover .text-white,
+.dark .glass:hover .group-hover\:text-white,
+.dark .glass:hover .text-white\/80,
+.dark .glass:hover .group-hover\:text-white\/80,
+.dark .glass:hover .text-white\/90, 
+.dark .glass:hover .group-hover\:text-white\/90 {
+  @apply text-white;
+}
+
+.dark .glass:hover .text-muted-foreground {
+  @apply text-white/90;
+}
+
+/* Better light mode hover text color */
+.light .glass:hover .text-muted-foreground {
+  @apply text-foreground/90;
 }
 
 /* Enhanced animation styles with reversed direction */

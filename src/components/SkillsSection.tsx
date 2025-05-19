@@ -31,7 +31,7 @@ const SkillsSection = () => {
     <section className="py-16 px-2 sm:px-4" id="skills">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-2 text-center text-gradient">Skills</h2>
-        <p className="text-center text-purple-300/80 mb-10 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
           Technical expertise and professional capabilities that drive project success
         </p>
         
@@ -54,7 +54,7 @@ const SkillsSection = () => {
                   <Badge 
                     key={index} 
                     variant="secondary"
-                    className="bg-white/10 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-glow cursor-default py-1.5"
+                    className="bg-white/10 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-glow cursor-default py-1.5 text-foreground"
                   >
                     {skill}
                   </Badge>

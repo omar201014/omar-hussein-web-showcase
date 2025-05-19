@@ -23,7 +23,7 @@ const EducationSection = () => {
     <section className="py-12 md:py-16 px-2 sm:px-4 bg-secondary/50" id="education">
       <div className="container mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold mb-2 text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Education</h2>
-        <p className="text-sm md:text-base text-center text-purple-300/80 mb-6 md:mb-10 max-w-2xl mx-auto">
+        <p className="text-sm md:text-base text-center text-muted-foreground mb-6 md:mb-10 max-w-2xl mx-auto">
           Academic qualifications forming the foundation of my technical knowledge
         </p>
         
@@ -76,7 +76,7 @@ const EducationSection = () => {
                 <CardContent className="p-4 md:p-6 pt-0">
                   <div className="pl-4 md:pl-10 relative">
                     <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500/80 to-pink-500/40"></div>
-                    <p className="text-xs md:text-sm text-muted-foreground group-hover:text-white/80 transition-colors duration-300">{edu.description}</p>
+                    <p className="text-xs md:text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">{edu.description}</p>
                   </div>
                 </CardContent>
               )}

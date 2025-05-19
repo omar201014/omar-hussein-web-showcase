@@ -1,9 +1,8 @@
-
 import { useState, useRef } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
-import { Link, ExternalLink, PlayCircle, ArrowRight, Code, Laptop } from "lucide-react";
+import { Link, ExternalLink, PlayCircle, ArrowRight } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -135,7 +134,7 @@ const ProjectsSection = () => {
         <h2 className="text-3xl font-bold mb-2 text-center bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent animate-fade-in">
           Projects
         </h2>
-        <p className="text-center text-purple-300/80 mb-10 max-w-2xl mx-auto px-2">
+        <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto px-2">
           Explore my recent work crafting responsive, high-performing websites for businesses across different industries
         </p>
         
@@ -186,7 +185,7 @@ const ProjectsSection = () => {
                   </div>
                 </AspectRatio>
                 
-                <CardDescription className="text-xs sm:text-sm text-white/80">{project.description}</CardDescription>
+                <CardDescription className="text-xs sm:text-sm text-muted-foreground font-medium">{project.description}</CardDescription>
                 
                 {project.tech && (
                   <div className="flex flex-wrap gap-1 mt-2">
@@ -202,20 +201,20 @@ const ProjectsSection = () => {
                 )}
                 
                 <div className="flex flex-col xs:flex-row gap-2 pt-2">
-                  <Button variant="outline" size="sm" asChild className="group transition-all duration-300 hover:bg-purple-500/20 hover:text-white text-xs sm:text-sm">
+                  <Button variant="outline" size="sm" asChild className="group transition-all duration-300 hover:bg-purple-500/20 hover:text-foreground text-xs sm:text-sm">
                     <a href={project.siteLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
                       <Link className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
                       <span>Visit Site</span>
                       <ArrowRight className="ml-1 h-3 w-0 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all duration-300" />
                     </a>
                   </Button>
-                  <Button variant="outline" size="sm" asChild className="group transition-all duration-300 hover:bg-pink-500/20 hover:text-white text-xs sm:text-sm">
+                  <Button variant="outline" size="sm" asChild className="group transition-all duration-300 hover:bg-pink-500/20 hover:text-foreground text-xs sm:text-sm">
                     {project.video ? (
                       <a onClick={(e) => {
                         e.preventDefault();
                         setOpenVideo(project.video);
                       }} href="#" className="flex items-center">
-                        <Laptop className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
+                        <PlayCircle className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
                         <span>Live Demo</span>
                       </a>
                     ) : (
