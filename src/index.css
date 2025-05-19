@@ -119,22 +119,28 @@
 }
 
 /* Ensure card text remains visible on hover in dark mode */
-.dark .glass:hover .text-white,
-.dark .glass:hover .group-hover\:text-white,
+.dark .glass:hover .text-white {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+.dark .glass:hover .group-hover\:text-white {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
 .dark .glass:hover .text-white\/80,
 .dark .glass:hover .group-hover\:text-white\/80,
 .dark .glass:hover .text-white\/90, 
 .dark .glass:hover .group-hover\:text-white\/90 {
-  @apply text-white;
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .dark .glass:hover .text-muted-foreground {
-  @apply text-white/90;
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Better light mode hover text color */
 .light .glass:hover .text-muted-foreground {
-  @apply text-foreground/90;
+  color: rgba(22, 22, 22, 0.9) !important;
 }
 
 /* Enhanced animation styles with reversed direction */
