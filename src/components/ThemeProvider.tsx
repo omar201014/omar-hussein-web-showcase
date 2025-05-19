@@ -42,10 +42,14 @@ export function ThemeProvider({
         : "light"
 
       root.classList.add(systemTheme)
+      document.body.classList.add(systemTheme)
+      document.body.classList.remove(systemTheme === "dark" ? "light" : "dark")
       return
     }
 
     root.classList.add(theme)
+    document.body.classList.add(theme)
+    document.body.classList.remove(theme === "dark" ? "light" : "dark")
   }, [theme])
 
   const value = {

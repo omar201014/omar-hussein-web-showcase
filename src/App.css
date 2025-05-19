@@ -8,7 +8,7 @@
 
 ::selection {
   background: rgba(157, 78, 221, 0.4);
-  color: #ffffff;
+  color: var(--foreground);
 }
 
 .text-gradient {
