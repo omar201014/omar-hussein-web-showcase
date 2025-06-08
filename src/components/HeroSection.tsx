@@ -1,4 +1,3 @@
-
 import { Github, Linkedin, Mail, MapPin, Download, ChevronDown, Mouse, Phone } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import BackgroundPattern from './BackgroundPattern';
@@ -37,7 +36,15 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-start p-8 md:p-16 relative overflow-hidden">
+    <section 
+      className="min-h-screen flex flex-col justify-center items-start p-8 md:p-16 relative overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: 'url("lovable-uploads/artistic-blurry-colorful-wallpaper-background.webp")'
+      }}
+    >
+      {/* Theme-based overlay */}
+      <div className="absolute inset-0 bg-background/80 dark:bg-background/85 backdrop-blur-[2px]"></div>
+      
       <BackgroundPattern />
       
       {/* Header with Logo and Theme Toggle */}
