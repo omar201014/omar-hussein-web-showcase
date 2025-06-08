@@ -1,9 +1,9 @@
-
 import { useState, useRef } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
-import { Link, ExternalLink, PlayCircle, ArrowRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Link, ExternalLink, PlayCircle, ArrowRight, Star } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -15,6 +15,7 @@ interface Project {
   siteLink: string;
   demoLink: string;
   tech?: string[];
+  featured?: boolean;
 }
 
 const ProjectsSection = () => {
@@ -22,6 +23,17 @@ const ProjectsSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+
+  const featuredProject: Project = {
+    title: "ZED Gaming Center",
+    description: "Abu Dhabi's premier gaming destination featuring state-of-the-art gaming stations, VR experiences, and competitive gaming tournaments.",
+    image: "lovable-uploads/ZED Gaming Center Abu Dhabi cover.png",
+    video: "lovable-uploads/Zed Gaming Center Showcase Demo HECx256.mp4",
+    siteLink: "https://zedae.ae",
+    demoLink: "https://zedae.ae",
+    tech: ["WordPress", "Gaming Platform", "Custom Design", "Booking System"],
+    featured: true
+  };
 
   const projects: Project[] = [
     {
@@ -129,6 +141,121 @@ const ProjectsSection = () => {
     });
   };
 
+  const renderProjectCard = (project: Project, index: number, isFeatured = false) => (
+    <Card 
+      key={isFeatured ? 'featured' : index} 
+      className={`group project-card transform transition-all duration-500 hover:rotate-1 glass overflow-hidden ${
+        hoveredIndex === (isFeatured ? -1 : index) ? 'ring-2 ring-purple-500/50' : ''
+      } ${
+        isFeatured ? 'col-span-full lg:col-span-2 border-2 border-gradient-to-r from-purple-500 to-pink-500 shadow-2xl shadow-purple-500/20' : ''
+      }`}
+      onMouseEnter={() => setHoveredIndex(isFeatured ? -1 : index)}
+      onMouseLeave={() => setHoveredIndex(null)}
+    >
+      <CardHeader className={`pb-2 ${isFeatured ? 'p-4 sm:p-6' : 'p-3 sm:p-4 md:p-6'}`}>
+        <div className="flex items-center justify-between">
+          <CardTitle className={`text-gradient ${isFeatured ? 'text-xl sm:text-2xl lg:text-3xl' : 'text-lg sm:text-xl'}`}>
+            {project.title}
+          </CardTitle>
+          {isFeatured && (
+            <Badge variant="secondary" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-0 flex items-center gap-1">
+              <Star className="h-3 w-3" />
+              Featured
+            </Badge>
+          )}
+        </div>
+      </CardHeader>
+      <CardContent className={`space-y-3 sm:space-y-4 pt-0 ${isFeatured ? 'p-4 sm:p-6' : 'p-3 sm:p-4 md:p-6'}`}>
+        <AspectRatio ratio={16/9} className="image-zoom-container">
+          <div className="relative w-full h-full rounded-md overflow-hidden">
+            <img 
+              src={project.image} 
+              alt={project.title}
+              className="absolute inset-0 w-full h-full object-cover image-zoom"
+              loading="lazy"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                console.log(`Image failed to load: ${target.src}`);
+                target.src = "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d";
+              }}
+            />
+            {project.video && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className={`text-white hover:text-primary hover:bg-black/50 rounded-full transition-all duration-300 hover:scale-110 ${
+                    isFeatured ? 'h-20 w-20 sm:h-24 sm:w-24' : 'h-16 w-16 sm:h-20 sm:w-20'
+                  }`}
+                  onClick={() => setOpenVideo(project.video)}
+                >
+                  <PlayCircle className={`drop-shadow-lg ${isFeatured ? 'h-16 w-16 sm:h-20 sm:w-20' : 'h-12 w-12 sm:h-16 sm:w-16'}`} />
+                  <span className="sr-only">Play video</span>
+                </Button>
+              </div>
+            )}
+          </div>
+        </AspectRatio>
+        
+        <CardDescription className={`text-muted-foreground font-medium ${isFeatured ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
+          {project.description}
+        </CardDescription>
+        
+        {project.tech && (
+          <div className="flex flex-wrap gap-1 mt-2">
+            {project.tech.map((tech, i) => (
+              <span 
+                key={i} 
+                className={`px-2 py-0.5 sm:py-1 rounded-full bg-purple-500/20 text-purple-700 dark:text-purple-300 border border-purple-500/30 ${
+                  isFeatured ? 'text-xs sm:text-sm' : 'text-xs'
+                }`}
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
+        
+        <div className={`flex flex-col xs:flex-row gap-2 pt-2 ${isFeatured ? 'gap-3' : ''}`}>
+          <Button 
+            variant="outline" 
+            size={isFeatured ? "default" : "sm"} 
+            asChild 
+            className="group transition-all duration-300 hover:bg-purple-500/20 hover:text-foreground text-xs sm:text-sm"
+          >
+            <a href={project.siteLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
+              <Link className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
+              <span>Visit Site</span>
+              <ArrowRight className="ml-1 h-3 w-0 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all duration-300" />
+            </a>
+          </Button>
+          <Button 
+            variant="outline" 
+            size={isFeatured ? "default" : "sm"} 
+            asChild 
+            className="group transition-all duration-300 hover:bg-pink-500/20 hover:text-foreground text-xs sm:text-sm"
+          >
+            {project.video ? (
+              <a onClick={(e) => {
+                e.preventDefault();
+                setOpenVideo(project.video);
+              }} href="#" className="flex items-center">
+                <PlayCircle className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
+                <span>Live Demo</span>
+              </a>
+            ) : (
+              <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                <ExternalLink className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
+                <span>Live Demo</span>
+                <ArrowRight className="ml-1 h-3 w-0 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all duration-300" />
+              </a>
+            )}
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+
   return (
     <section className="py-16 px-2 sm:px-4 bg-secondary/50" id="projects">
       <div className="container mx-auto">
@@ -141,95 +268,20 @@ const ProjectsSection = () => {
         
         <div 
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8" 
+          className="space-y-8" 
           data-animate
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
-          {projects.map((project, index) => (
-            <Card 
-              key={index} 
-              className={`group project-card transform transition-all duration-500 hover:rotate-1 glass overflow-hidden ${hoveredIndex === index ? 'ring-2 ring-purple-500/50' : ''}`}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <CardHeader className="pb-2 p-3 sm:p-4 md:p-6">
-                <CardTitle className="text-lg sm:text-xl text-gradient">{project.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3 sm:space-y-4 pt-0 p-3 sm:p-4 md:p-6">
-                <AspectRatio ratio={16/9} className="image-zoom-container">
-                  <div className="relative w-full h-full rounded-md overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="absolute inset-0 w-full h-full object-cover image-zoom"
-                      loading="lazy"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        console.log(`Image failed to load: ${target.src}`);
-                        target.src = "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d";
-                      }}
-                    />
-                    {project.video && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <Button 
-                          variant="ghost" 
-                          size="icon" 
-                          className="text-white hover:text-primary hover:bg-black/50 rounded-full h-16 w-16 sm:h-20 sm:w-20 transition-all duration-300 hover:scale-110"
-                          onClick={() => setOpenVideo(project.video)}
-                        >
-                          <PlayCircle className="h-12 w-12 sm:h-16 sm:w-16 drop-shadow-lg" />
-                          <span className="sr-only">Play video</span>
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                </AspectRatio>
-                
-                <CardDescription className="text-xs sm:text-sm text-muted-foreground font-medium">{project.description}</CardDescription>
-                
-                {project.tech && (
-                  <div className="flex flex-wrap gap-1 mt-2">
-                    {project.tech.map((tech, i) => (
-                      <span 
-                        key={i} 
-                        className="text-xs px-2 py-0.5 sm:py-1 rounded-full bg-purple-500/20 dark:text-purple-300 text-purple-700 border border-purple-500/30"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                
-                <div className="flex flex-col xs:flex-row gap-2 pt-2">
-                  <Button variant="outline" size="sm" asChild className="group transition-all duration-300 hover:bg-purple-500/20 hover:text-foreground text-xs sm:text-sm">
-                    <a href={project.siteLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                      <Link className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
-                      <span>Visit Site</span>
-                      <ArrowRight className="ml-1 h-3 w-0 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all duration-300" />
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="sm" asChild className="group transition-all duration-300 hover:bg-pink-500/20 hover:text-foreground text-xs sm:text-sm">
-                    {project.video ? (
-                      <a onClick={(e) => {
-                        e.preventDefault();
-                        setOpenVideo(project.video);
-                      }} href="#" className="flex items-center">
-                        <PlayCircle className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
-                        <span>Live Demo</span>
-                      </a>
-                    ) : (
-                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                        <ExternalLink className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
-                        <span>Live Demo</span>
-                        <ArrowRight className="ml-1 h-3 w-0 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all duration-300" />
-                      </a>
-                    )}
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          {/* Featured Project */}
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            {renderProjectCard(featuredProject, 0, true)}
+          </div>
+          
+          {/* Regular Projects */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+            {projects.map((project, index) => renderProjectCard(project, index, false))}
+          </div>
         </div>
       </div>
 
@@ -240,7 +292,7 @@ const ProjectsSection = () => {
               controls
               className="w-full h-full"
               preload="none"
-              poster={projects.find(p => p.video === openVideo)?.image}
+              poster={[featuredProject, ...projects].find(p => p.video === openVideo)?.image}
             >
               <source src={openVideo} type="video/mp4" />
               Your browser does not support the video tag.
