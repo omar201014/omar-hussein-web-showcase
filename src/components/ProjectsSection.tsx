@@ -40,8 +40,8 @@ const ProjectsSection = () => {
       description: "Modern mental health platform offering professional psychological services and resources.",
       image: "lovable-uploads/psycology vibes website.png",
       video: "lovable-uploads/psycology vibes website demo.mp4",
-      siteLink: "#",
-      demoLink: "#",
+      siteLink: "https://psychologyvibes.com",
+      demoLink: "https://psychologyvibes.com",
       tech: ["WordPress", "Booking System", "Custom Theme", "Future Project"],
       featured: true
     },
