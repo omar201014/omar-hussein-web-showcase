@@ -24,18 +24,55 @@ const ProjectsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
 
-  const featuredProject: Project = {
-    title: "ZED Gaming Center",
-    description: "Abu Dhabi's premier gaming destination featuring state-of-the-art gaming stations, VR experiences, and competitive gaming tournaments.",
-    image: "lovable-uploads/ZED Gaming Center Abu Dhabi cover.png",
-    video: "lovable-uploads/Zed Gaming Center Showcase Demo HECx256.mp4",
-    siteLink: "https://zedae.ae",
-    demoLink: "https://zedae.ae",
-    tech: ["WordPress", "Gaming Platform", "Custom Design", "Booking System"],
-    featured: true
-  };
-
   const projects: Project[] = [
+    {
+      title: "Sheelan Designs",
+      description: "Elegant interior design portfolio showcasing luxury residential and commercial projects.",
+      image: "lovable-uploads/sheelandesign.com_.png",
+      video: "lovable-uploads/sheelandesign website demo.mp4",
+      siteLink: "https://sheelandesign.com",
+      demoLink: "https://sheelandesign.com",
+      tech: ["WordPress", "Portfolio", "Custom Design", "Gallery"],
+      featured: true
+    },
+    {
+      title: "Psychology Vibes",
+      description: "Modern mental health platform offering professional psychological services and resources.",
+      image: "lovable-uploads/psycology vibes website.png",
+      video: "lovable-uploads/psycology vibes website demo.mp4",
+      siteLink: "#",
+      demoLink: "#",
+      tech: ["WordPress", "Booking System", "Custom Theme", "Future Project"],
+      featured: true
+    },
+    {
+      title: "NV Interior",
+      description: "Premium interior design solutions for luxury residential and commercial spaces in the UAE.",
+      image: "lovable-uploads/nvuae.ae.png",
+      video: "lovable-uploads/nvuae website demo.mp4",
+      siteLink: "https://nvuae.ae",
+      demoLink: "https://nvuae.ae",
+      tech: ["WordPress", "Portfolio", "Custom Design", "Responsive"],
+      featured: true
+    },
+    {
+      title: "ZED Gaming Center",
+      description: "Abu Dhabi's premier gaming destination featuring state-of-the-art gaming stations and VR experiences.",
+      image: "lovable-uploads/ZED Gaming Center Abu Dhabi cover.png",
+      video: "lovable-uploads/Zed Gaming Center Showcase Demo HECx256.mp4",
+      siteLink: "https://zedae.ae",
+      demoLink: "https://zedae.ae",
+      tech: ["WordPress", "Gaming Platform", "Custom Design", "Booking System"]
+    },
+    {
+      title: "EVE Design",
+      description: "Contemporary design studio specializing in innovative branding and digital experiences.",
+      image: "lovable-uploads/evedesign.net.png",
+      video: "lovable-uploads/evedesign website demo.mp4",
+      siteLink: "https://evedesign.net",
+      demoLink: "https://evedesign.net",
+      tech: ["WordPress", "Branding", "Portfolio", "Custom Design"]
+    },
     {
       title: "Escrow Real Estate",
       description: "Premier real estate platform showcasing luxury properties in the UAE.",
@@ -97,15 +134,6 @@ const ProjectsSection = () => {
       siteLink: "https://abdullahtaj.com",
       demoLink: "https://abdullahtaj.com",
       tech: ["WordPress", "Portfolio", "Responsive Design"]
-    },
-    {
-      title: "Arcave Interior Design",
-      description: "Abu Dhabi-based commercial interior design studio for clinics, offices, and cafes.",
-      image: "lovable-uploads/arcave.webp",
-      video: "lovable-uploads/Arcave showcase.mp4",
-      siteLink: "https://design.arcave.ae",
-      demoLink: "https://demo.arcave.ae",
-      tech: ["WordPress", "Gallery", "Custom Design"]
     }
   ];
 
@@ -141,23 +169,23 @@ const ProjectsSection = () => {
     });
   };
 
-  const renderProjectCard = (project: Project, index: number, isFeatured = false) => (
+  const renderProjectCard = (project: Project, index: number) => (
     <Card 
-      key={isFeatured ? 'featured' : index} 
+      key={index} 
       className={`group project-card transform transition-all duration-500 hover:rotate-1 glass overflow-hidden ${
-        hoveredIndex === (isFeatured ? -1 : index) ? 'ring-2 ring-purple-500/50' : ''
+        hoveredIndex === index ? 'ring-2 ring-purple-500/50' : ''
       } ${
-        isFeatured ? 'col-span-full lg:col-span-2 border-2 border-gradient-to-r from-purple-500 to-pink-500 shadow-2xl shadow-purple-500/20' : ''
+        project.featured ? 'border-2 border-gradient-to-r from-purple-500 to-pink-500 shadow-2xl shadow-purple-500/20' : ''
       }`}
-      onMouseEnter={() => setHoveredIndex(isFeatured ? -1 : index)}
+      onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
     >
-      <CardHeader className={`pb-2 ${isFeatured ? 'p-4 sm:p-6' : 'p-3 sm:p-4 md:p-6'}`}>
+      <CardHeader className="pb-2 p-3 sm:p-4 md:p-6">
         <div className="flex items-center justify-between">
-          <CardTitle className={`text-gradient ${isFeatured ? 'text-xl sm:text-2xl lg:text-3xl' : 'text-lg sm:text-xl'}`}>
+          <CardTitle className={`text-gradient ${project.featured ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'}`}>
             {project.title}
           </CardTitle>
-          {isFeatured && (
+          {project.featured && (
             <Badge variant="secondary" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-0 flex items-center gap-1">
               <Star className="h-3 w-3" />
               Featured
@@ -165,7 +193,7 @@ const ProjectsSection = () => {
           )}
         </div>
       </CardHeader>
-      <CardContent className={`space-y-3 sm:space-y-4 pt-0 ${isFeatured ? 'p-4 sm:p-6' : 'p-3 sm:p-4 md:p-6'}`}>
+      <CardContent className="space-y-3 sm:space-y-4 pt-0 p-3 sm:p-4 md:p-6">
         <AspectRatio ratio={16/9} className="image-zoom-container">
           <div className="relative w-full h-full rounded-md overflow-hidden">
             <img 
@@ -184,12 +212,10 @@ const ProjectsSection = () => {
                 <Button 
                   variant="ghost" 
                   size="icon" 
-                  className={`text-white hover:text-primary hover:bg-black/50 rounded-full transition-all duration-300 hover:scale-110 ${
-                    isFeatured ? 'h-20 w-20 sm:h-24 sm:w-24' : 'h-16 w-16 sm:h-20 sm:w-20'
-                  }`}
+                  className="text-white hover:text-primary hover:bg-black/50 rounded-full transition-all duration-300 hover:scale-110 h-16 w-16 sm:h-20 sm:w-20"
                   onClick={() => setOpenVideo(project.video)}
                 >
-                  <PlayCircle className={`drop-shadow-lg ${isFeatured ? 'h-16 w-16 sm:h-20 sm:w-20' : 'h-12 w-12 sm:h-16 sm:w-16'}`} />
+                  <PlayCircle className="drop-shadow-lg h-12 w-12 sm:h-16 sm:w-16" />
                   <span className="sr-only">Play video</span>
                 </Button>
               </div>
@@ -197,7 +223,7 @@ const ProjectsSection = () => {
           </div>
         </AspectRatio>
         
-        <CardDescription className={`text-muted-foreground font-medium ${isFeatured ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
+        <CardDescription className="text-muted-foreground font-medium text-xs sm:text-sm">
           {project.description}
         </CardDescription>
         
@@ -206,9 +232,7 @@ const ProjectsSection = () => {
             {project.tech.map((tech, i) => (
               <span 
                 key={i} 
-                className={`px-2 py-0.5 sm:py-1 rounded-full bg-purple-500/20 text-purple-700 dark:text-purple-300 border border-purple-500/30 ${
-                  isFeatured ? 'text-xs sm:text-sm' : 'text-xs'
-                }`}
+                className="px-2 py-0.5 sm:py-1 rounded-full bg-purple-500/20 text-purple-700 dark:text-purple-300 border border-purple-500/30 text-xs"
               >
                 {tech}
               </span>
@@ -216,10 +240,10 @@ const ProjectsSection = () => {
           </div>
         )}
         
-        <div className={`flex flex-col xs:flex-row gap-2 pt-2 ${isFeatured ? 'gap-3' : ''}`}>
+        <div className="flex flex-col xs:flex-row gap-2 pt-2">
           <Button 
             variant="outline" 
-            size={isFeatured ? "default" : "sm"} 
+            size="sm"
             asChild 
             className="group transition-all duration-300 hover:bg-purple-500/20 hover:text-foreground text-xs sm:text-sm"
           >
@@ -231,7 +255,7 @@ const ProjectsSection = () => {
           </Button>
           <Button 
             variant="outline" 
-            size={isFeatured ? "default" : "sm"} 
+            size="sm"
             asChild 
             className="group transition-all duration-300 hover:bg-pink-500/20 hover:text-foreground text-xs sm:text-sm"
           >
@@ -268,20 +292,12 @@ const ProjectsSection = () => {
         
         <div 
           ref={containerRef}
-          className="space-y-8" 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8" 
           data-animate
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
-          {/* Featured Project */}
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            {renderProjectCard(featuredProject, 0, true)}
-          </div>
-          
-          {/* Regular Projects */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-            {projects.map((project, index) => renderProjectCard(project, index, false))}
-          </div>
+          {projects.map((project, index) => renderProjectCard(project, index))}
         </div>
       </div>
 
@@ -292,7 +308,7 @@ const ProjectsSection = () => {
               controls
               className="w-full h-full"
               preload="none"
-              poster={[featuredProject, ...projects].find(p => p.video === openVideo)?.image}
+              poster={projects.find(p => p.video === openVideo)?.image}
             >
               <source src={openVideo} type="video/mp4" />
               Your browser does not support the video tag.
