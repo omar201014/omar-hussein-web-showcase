@@ -1,28 +1,43 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export const useTypewriter = (text: string, speed: number = 100) => {
   const [displayText, setDisplayText] = useState('');
+  const isMountedRef = useRef(true);
   
   useEffect(() => {
-    // Reset the display text when the input text changes
+    isMountedRef.current = true;
     setDisplayText('');
     
-    // Create a new typing animation
     let currentIndex = 0;
+    let animationFrameId: number;
+    let lastTimestamp = 0;
     
-    const typingInterval = setInterval(() => {
-      if (currentIndex < text.length) {
-        setDisplayText(text.substring(0, currentIndex + 1));
-        currentIndex++;
-      } else {
-        clearInterval(typingInterval);
+    const animate = (timestamp: number) => {
+      if (!isMountedRef.current) return;
+      
+      if (timestamp - lastTimestamp >= speed) {
+        if (currentIndex < text.length) {
+          setDisplayText(text.substring(0, currentIndex + 1));
+          currentIndex++;
+          lastTimestamp = timestamp;
+        } else {
+          return;
+        }
       }
-    }, speed);
+      
+      if (currentIndex < text.length) {
+        animationFrameId = requestAnimationFrame(animate);
+      }
+    };
     
-    // Clean up the interval when the component unmounts or text changes
+    animationFrameId = requestAnimationFrame(animate);
+    
     return () => {
-      clearInterval(typingInterval);
+      isMountedRef.current = false;
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
   }, [text, speed]);
   

@@ -1,53 +1,57 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 export const useScrollAnimation = () => {
-  // Store observer in a ref to avoid recreating it on every render
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const animatedElementsRef = useRef<Set<Element>>(new Set());
+
+  const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !animatedElementsRef.current.has(entry.target)) {
+        animatedElementsRef.current.add(entry.target);
+        
+        // Batch DOM updates
+        requestAnimationFrame(() => {
+          entry.target.classList.add('animate-in');
+          
+          // Handle project cards with staggered animation
+          const projectCards = entry.target.querySelectorAll('.project-card');
+          if (projectCards.length) {
+            projectCards.forEach((card, index) => {
+              setTimeout(() => {
+                requestAnimationFrame(() => {
+                  card.classList.add('animate-in');
+                });
+              }, 100 * (index + 1)); // Optimized delay
+            });
+          }
+          
+          // Handle stagger children
+          const children = entry.target.querySelectorAll('[data-stagger]');
+          if (children.length) {
+            children.forEach((child, index) => {
+              const element = child as HTMLElement;
+              element.style.transitionDelay = `${0.1 + (index * 0.1)}s`;
+              element.style.transitionDuration = '0.8s';
+              requestAnimationFrame(() => {
+                element.classList.add('animate-in');
+              });
+            });
+          }
+        });
+        
+        // Unobserve after animation to free memory
+        observerRef.current?.unobserve(entry.target);
+      }
+    });
+  }, []);
 
   useEffect(() => {
-    // Create the observer only once
     if (!observerRef.current) {
-      observerRef.current = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              // Use requestAnimationFrame for smoother animations
-              requestAnimationFrame(() => {
-                entry.target.classList.add('animate-in');
-                
-                // Sequential card animation for projects section
-                const projectCards = entry.target.querySelectorAll('.project-card');
-                if (projectCards.length) {
-                  projectCards.forEach((card, index) => {
-                    // Using setTimeout inside requestAnimationFrame for better performance
-                    setTimeout(() => {
-                      requestAnimationFrame(() => {
-                        card.classList.add('animate-in');
-                      });
-                    }, 200 * (index + 1)); // Reduced delay for better responsiveness
-                  });
-                }
-                
-                // Enhanced stagger effect for child elements with better performance
-                const children = entry.target.querySelectorAll('[data-stagger]');
-                children.forEach((child, index) => {
-                  const delay = 0.3 + (index * 0.2); // Reduced delay for performance
-                  (child as HTMLElement).style.transitionDelay = `${delay}s`;
-                  (child as HTMLElement).style.transitionDuration = '1s'; // Shorter duration for performance
-                  requestAnimationFrame(() => {
-                    child.classList.add('animate-in');
-                  });
-                });
-              });
-            }
-          });
-        },
-        {
-          threshold: 0.1, // Slight increase for better detection
-          rootMargin: '0px 0px -80px 0px', // Adjusted for performance
-        }
-      );
+      observerRef.current = new IntersectionObserver(handleIntersection, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px',
+      });
     }
 
     const elements = document.querySelectorAll('[data-animate]');
@@ -55,9 +59,10 @@ export const useScrollAnimation = () => {
 
     return () => {
       if (observerRef.current) {
-        elements.forEach((el) => observerRef.current?.unobserve(el));
         observerRef.current.disconnect();
+        observerRef.current = null;
       }
+      animatedElementsRef.current.clear();
     };
-  }, []);
+  }, [handleIntersection]);
 };

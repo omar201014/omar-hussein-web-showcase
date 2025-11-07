@@ -91,13 +91,13 @@
 
 .fade-in {
   opacity: 0;
-  animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-50px); /* Reversed: now coming from above */
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -143,12 +143,12 @@
   color: rgba(22, 22, 22, 0.9) !important;
 }
 
-/* Enhanced animation styles with reversed direction */
+/* Optimized entrance animations */
 [data-animate] {
   opacity: 0;
-  transform: translateY(-60px); /* Coming from above instead of below */
-  transition: opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1), 
-              transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -159,9 +159,9 @@
 
 [data-stagger] {
   opacity: 0;
-  transform: translateY(-50px) scale(0.97); /* Coming from above */
-  transition: opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(20px) scale(0.98);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -171,19 +171,13 @@
 }
 
 .animate-fade-in {
-  animation: enhancedFadeIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: enhancedFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes enhancedFadeIn {
   0% {
     opacity: 0;
-    transform: translateY(-60px) scale(0.96); /* Coming from above */
-  }
-  70% {
-    transform: translateY(8px) scale(1.01); /* Slight overshoot */
-  }
-  85% {
-    transform: translateY(-4px) scale(1);
+    transform: translateY(25px) scale(0.98);
   }
   100% {
     opacity: 1;
@@ -219,23 +213,23 @@
 [data-animate] .glass,
 .glass[data-stagger] {
   opacity: 0;
-  transform: translateY(-40px) scale(0.95); /* Coming from above */
+  transform: translateY(25px) scale(0.97);
 }
 
 [data-animate].animate-in .glass,
 .glass[data-stagger].animate-in {
   opacity: 1;
   transform: translateY(0) scale(1);
-  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Project cards sequential animation */
 .project-card {
   opacity: 0;
-  transform: translateY(-50px);
-  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-card.animate-in {
