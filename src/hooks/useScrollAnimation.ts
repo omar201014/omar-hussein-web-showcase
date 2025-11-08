@@ -29,7 +29,7 @@ export const useScrollAnimation = () => {
                 requestAnimationFrame(() => {
                   card.classList.add('animate-in');
                 });
-              }, 80 * index); // Faster stagger for better mobile experience
+              }, 120 * index); // Smooth sequential stagger
             });
           }
           
@@ -57,10 +57,10 @@ export const useScrollAnimation = () => {
 
   useEffect(() => {
     if (!observerRef.current) {
-      // More aggressive settings for better mobile support
+      // Optimized settings for smooth scroll-triggered animations
       observerRef.current = new IntersectionObserver(handleIntersection, {
-        threshold: 0.05, // Lower threshold for mobile
-        rootMargin: '0px 0px -10px 0px', // Less aggressive margin
+        threshold: 0.1, // Trigger when 10% visible
+        rootMargin: '0px 0px -80px 0px', // Trigger before element fully in view
       });
     }
 

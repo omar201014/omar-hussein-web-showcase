@@ -143,12 +143,12 @@
   color: rgba(22, 22, 22, 0.9) !important;
 }
 
-/* Optimized entrance animations */
+/* Smooth fade-in slide-up entrance animations */
 [data-animate] {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 [data-animate].animate-in {
@@ -158,9 +158,9 @@
 
 [data-stagger] {
   opacity: 0;
-  transform: translateY(20px) scale(0.98);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(40px) scale(0.96);
+  transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: opacity, transform;
 }
 
@@ -223,12 +223,12 @@
               transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Project cards sequential animation */
+/* Project cards smooth fade-in slide-up animation */
 .project-card {
   opacity: 0;
-  transform: translateY(20px) scale(0.98);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(50px) scale(0.95);
+  transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .project-card.animate-in {
