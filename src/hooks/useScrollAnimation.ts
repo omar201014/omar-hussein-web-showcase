@@ -14,6 +14,13 @@ export const useScrollAnimation = () => {
         requestAnimationFrame(() => {
           entry.target.classList.add('animate-in');
           
+          // If this is a project card itself, just animate it
+          if (entry.target.classList.contains('project-card')) {
+            // Already added animate-in class above
+            observerRef.current?.unobserve(entry.target);
+            return;
+          }
+          
           // Handle project cards with staggered animation
           const projectCards = entry.target.querySelectorAll('.project-card');
           if (projectCards.length) {
@@ -22,7 +29,7 @@ export const useScrollAnimation = () => {
                 requestAnimationFrame(() => {
                   card.classList.add('animate-in');
                 });
-              }, 100 * (index + 1)); // Optimized delay
+              }, 80 * index); // Faster stagger for better mobile experience
             });
           }
           
@@ -31,8 +38,8 @@ export const useScrollAnimation = () => {
           if (children.length) {
             children.forEach((child, index) => {
               const element = child as HTMLElement;
-              element.style.transitionDelay = `${0.1 + (index * 0.1)}s`;
-              element.style.transitionDuration = '0.8s';
+              element.style.transitionDelay = `${0.05 + (index * 0.08)}s`;
+              element.style.transitionDuration = '0.6s';
               requestAnimationFrame(() => {
                 element.classList.add('animate-in');
               });
@@ -41,21 +48,28 @@ export const useScrollAnimation = () => {
         });
         
         // Unobserve after animation to free memory
-        observerRef.current?.unobserve(entry.target);
+        setTimeout(() => {
+          observerRef.current?.unobserve(entry.target);
+        }, 1000);
       }
     });
   }, []);
 
   useEffect(() => {
     if (!observerRef.current) {
+      // More aggressive settings for better mobile support
       observerRef.current = new IntersectionObserver(handleIntersection, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.05, // Lower threshold for mobile
+        rootMargin: '0px 0px -10px 0px', // Less aggressive margin
       });
     }
 
     const elements = document.querySelectorAll('[data-animate]');
     elements.forEach((el) => observerRef.current?.observe(el));
+
+    // Also directly observe project cards as a fallback
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach((card) => observerRef.current?.observe(card));
 
     return () => {
       if (observerRef.current) {
