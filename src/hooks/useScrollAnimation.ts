@@ -56,20 +56,40 @@ export const useScrollAnimation = () => {
   }, []);
 
   useEffect(() => {
-    if (!observerRef.current) {
-      // Optimized settings for smooth scroll-triggered animations
-      observerRef.current = new IntersectionObserver(handleIntersection, {
-        threshold: 0.1, // Trigger when 10% visible
-        rootMargin: '0px 0px -80px 0px', // Trigger before element fully in view
+    // Small delay to ensure CSS is applied before observing
+    const setupObserver = () => {
+      if (!observerRef.current) {
+        // Optimized settings for smooth scroll-triggered animations
+        observerRef.current = new IntersectionObserver(handleIntersection, {
+          threshold: 0.15, // Trigger when 15% visible
+          rootMargin: '0px 0px -100px 0px', // Only trigger when scrolled into view
+        });
+      }
+
+      const elements = document.querySelectorAll('[data-animate]');
+      elements.forEach((el) => {
+        // Ensure initial state is set
+        if (!animatedElementsRef.current.has(el)) {
+          el.classList.remove('animate-in');
+        }
+        observerRef.current?.observe(el);
       });
-    }
 
-    const elements = document.querySelectorAll('[data-animate]');
-    elements.forEach((el) => observerRef.current?.observe(el));
+      // Also directly observe project cards
+      const projectCards = document.querySelectorAll('.project-card');
+      projectCards.forEach((card) => {
+        // Ensure initial state is set
+        if (!animatedElementsRef.current.has(card)) {
+          card.classList.remove('animate-in');
+        }
+        observerRef.current?.observe(card);
+      });
+    };
 
-    // Also directly observe project cards as a fallback
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach((card) => observerRef.current?.observe(card));
+    // Use RAF to ensure DOM is ready and CSS is applied
+    requestAnimationFrame(() => {
+      setTimeout(setupObserver, 50);
+    });
 
     return () => {
       if (observerRef.current) {
