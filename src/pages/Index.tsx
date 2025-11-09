@@ -54,9 +54,7 @@ const Index = () => {
         <EducationSection />
       </div>
       
-      <div className="animate-in" data-animate>
-        <Footer />
-      </div>
+      <Footer />
       
       {/* Scroll to top button - Using React state instead of ref manipulation */}
       <Button
