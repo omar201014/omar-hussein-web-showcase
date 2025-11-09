@@ -281,19 +281,19 @@ const ProjectsSection = () => {
   );
 
   return (
-    <section className="py-16 px-2 sm:px-4 bg-secondary/50" id="projects">
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-2 text-center bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent animate-fade-in">
+    <section className="py-12 sm:py-16 px-3 sm:px-4 bg-secondary/50" id="projects">
+      <div className="container mx-auto max-w-7xl">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-center bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
           Projects
         </h2>
-        <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto px-2">
+        <p className="text-center text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto px-2 text-sm sm:text-base">
           Explore my recent work crafting responsive, high-performing websites for businesses across different industries
         </p>
         
         <div 
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8" 
-          data-animate
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8" 
+          {...(!isMobile && { 'data-animate': true })}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
