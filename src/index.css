@@ -144,16 +144,19 @@
 }
 
 /* Smooth fade-in slide-up entrance animations */
+[data-animate]:not(.animate-in) {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
 [data-animate] {
-  opacity: 0 !important;
-  transform: translateY(40px) !important;
   transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
               transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-animate].animate-in {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 [data-stagger] {
@@ -224,17 +227,20 @@
 }
 
 /* Project cards smooth fade-in slide-up animation */
+.project-card:not(.animate-in) {
+  opacity: 0;
+  transform: translateY(60px) scale(0.92);
+}
+
 .project-card {
-  opacity: 0 !important;
-  transform: translateY(60px) scale(0.92) !important;
   transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
               transform 1s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 .project-card.animate-in {
-  opacity: 1 !important;
-  transform: translateY(0) scale(1) !important;
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 @keyframes pulse {
