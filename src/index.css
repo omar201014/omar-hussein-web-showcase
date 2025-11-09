@@ -243,6 +243,14 @@
   transform: translateY(0) scale(1);
 }
 
+/* Ensure project cards are visible on mobile */
+@media (max-width: 768px) {
+  .project-card:not(.animate-in) {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
