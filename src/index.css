@@ -139,34 +139,9 @@
 
 /* Modify glass hover for better text visibility */
 .glass:hover {
-  @apply bg-white/15;
+  @apply bg-white/20 dark:bg-white/10;
   box-shadow: var(--shadow-elegant);
-  transform: translateY(-6px) scale(1.02) translateZ(0);
-}
-
-/* Ensure card text remains visible on hover in dark mode */
-.dark .glass:hover .text-white {
-  color: rgba(255, 255, 255, 1) !important;
-}
-
-.dark .glass:hover .group-hover\:text-white {
-  color: rgba(255, 255, 255, 1) !important;
-}
-
-.dark .glass:hover .text-white\/80,
-.dark .glass:hover .group-hover\:text-white\/80,
-.dark .glass:hover .text-white\/90, 
-.dark .glass:hover .group-hover\:text-white\/90 {
-  color: rgba(255, 255, 255, 0.9) !important;
-}
-
-.dark .glass:hover .text-muted-foreground {
-  color: rgba(255, 255, 255, 0.9) !important;
-}
-
-/* Better light mode hover text color */
-.light .glass:hover .text-muted-foreground {
-  color: rgba(22, 22, 22, 0.9) !important;
+  transform: translateY(-4px) scale(1.01) translateZ(0);
 }
 
 /* Smooth fade-in slide-up entrance animations with GPU acceleration */
