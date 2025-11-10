@@ -229,7 +229,9 @@
 
 /* Project cards smooth fade-in slide-up animation with GPU acceleration */
 .project-card:not(.animate-in) {
-.project-card:not  transform: translateY(70px) scale(0.9) translateZ(0);
+   opacity: 0;
+  transform: translateY(70px) scale(0.9) translateZ(0);
+ 
 }
 
 .project-card {
