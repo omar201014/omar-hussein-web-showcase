@@ -25,6 +25,12 @@
     --input: 240 4.8% 85.9%;
     --ring: 240 4.9% 83.9%;
     --radius: 0.75rem;
+    
+    /* Enhanced visual variables */
+    --glow-primary: 252 56% 75%;
+    --glow-secondary: 320 70% 65%;
+    --shadow-elegant: 0 20px 60px -15px rgba(162, 89, 255, 0.3);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
@@ -48,6 +54,12 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+    
+    /* Enhanced visual variables */
+    --glow-primary: 252 56% 75%;
+    --glow-secondary: 320 70% 65%;
+    --shadow-elegant: 0 20px 60px -15px rgba(162, 89, 255, 0.4);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   * {
@@ -62,12 +74,24 @@
   body.dark {
     background: radial-gradient(circle at top, hsl(267 35% 12%), hsl(267 35% 4%));
     min-height: 100vh;
+    /* Optimize scroll performance */
+    will-change: scroll-position;
+    scroll-behavior: smooth;
   }
 
   /* Add light mode background */
   body.light {
     background: radial-gradient(circle at top, hsl(0 0% 100%), hsl(0 0% 95%));
     min-height: 100vh;
+    /* Optimize scroll performance */
+    will-change: scroll-position;
+    scroll-behavior: smooth;
+  }
+  
+  /* Hardware acceleration for smooth scrolling */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::-webkit-scrollbar {
@@ -107,15 +131,17 @@
 
 .glass {
   @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl;
-  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: var(--transition-smooth);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  will-change: transform, box-shadow;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
 /* Modify glass hover for better text visibility */
 .glass:hover {
   @apply bg-white/15;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-elegant);
+  transform: translateY(-6px) scale(1.02) translateZ(0);
 }
 
 /* Ensure card text remains visible on hover in dark mode */
@@ -143,33 +169,35 @@
   color: rgba(22, 22, 22, 0.9) !important;
 }
 
-/* Smooth fade-in slide-up entrance animations */
+/* Smooth fade-in slide-up entrance animations with GPU acceleration */
 [data-animate]:not(.animate-in) {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(50px) translateZ(0);
 }
 
 [data-animate] {
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+  transform: translateZ(0); /* GPU acceleration */
 }
 
 [data-animate].animate-in {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) translateZ(0);
 }
 
 [data-stagger] {
   opacity: 0;
-  transform: translateY(40px) scale(0.96);
-  transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(50px) scale(0.95) translateZ(0);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: opacity, transform;
 }
 
 [data-stagger].animate-in {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0) scale(1) translateZ(0);
 }
 
 .animate-fade-in {
@@ -195,73 +223,102 @@
   animation-delay: 800ms;
 }
 
-/* Card animation enhancement */
-.glass {
-  @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl;
-  transition: all 0.5s ease;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-  transform: translateY(0);
-  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+/* Enhanced parallax effect for sections */
+.parallax-section {
+  position: relative;
+  overflow: hidden;
 }
 
-.glass:hover {
-  @apply bg-white/15;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 0 0 2px rgba(255, 255, 255, 0.1);
-  transform: translateY(-6px) scale(1.02);
-  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+.parallax-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, hsl(var(--glow-primary) / 0.05), hsl(var(--glow-secondary) / 0.05));
+  transform: translateZ(0);
+  will-change: transform;
 }
 
-/* Card entrance animation */
-[data-animate] .glass,
-.glass[data-stagger] {
-  opacity: 0;
-  transform: translateY(25px) scale(0.97);
+/* Floating animation for decorative elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(-20px) translateZ(0);
+  }
 }
 
-[data-animate].animate-in .glass,
-.glass[data-stagger].animate-in {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+.float-animation {
+  animation: float 6s ease-in-out infinite;
 }
 
-/* Project cards smooth fade-in slide-up animation */
+/* Project cards smooth fade-in slide-up animation with GPU acceleration */
 .project-card:not(.animate-in) {
   opacity: 0;
-  transform: translateY(60px) scale(0.92);
+  transform: translateY(70px) scale(0.9) translateZ(0);
 }
 
 .project-card {
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
+  transform: translateZ(0);
 }
 
 .project-card.animate-in {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0) scale(1) translateZ(0);
 }
 
-/* Mobile optimizations - disable animations for better performance */
+/* Mobile optimizations - simplified animations for better performance */
 @media (max-width: 768px) {
+  /* Instant visibility on mobile - no animation delays */
   [data-animate]:not(.animate-in),
   [data-animate],
+  [data-stagger]:not(.animate-in),
+  [data-stagger],
   .project-card:not(.animate-in),
   .project-card {
     opacity: 1 !important;
-    transform: translateY(0) scale(1) !important;
+    transform: translateY(0) scale(1) translateZ(0) !important;
     transition: none !important;
+    will-change: auto !important;
   }
   
   /* Optimize glass effect on mobile */
   .glass {
-    backdrop-filter: blur(8px);
-    transition: all 0.2s ease;
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s ease;
+    will-change: transform;
   }
   
   .glass:hover {
-    transform: translateY(-2px) scale(1.005);
+    transform: translateY(-2px) scale(1.005) translateZ(0);
+  }
+  
+  /* Optimize body for smooth scrolling on mobile */
+  body {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  /* Reduce motion for better mobile performance */
+  * {
+    will-change: auto !important;
+  }
+}
+
+/* Water ripple animation for cursor */
+@keyframes ripple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0.5;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
   }
 }
 

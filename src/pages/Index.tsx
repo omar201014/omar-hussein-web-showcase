@@ -6,6 +6,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import EducationSection from "@/components/EducationSection";
 import Footer from "@/components/Footer";
+import CustomCursor from "@/components/CustomCursor";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -33,6 +34,7 @@ const Index = () => {
   
   return (
     <div className="min-h-screen bg-background">
+      <CustomCursor />
       <HeroSection />
       
       {/* Section divider */}

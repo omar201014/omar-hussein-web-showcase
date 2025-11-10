@@ -172,34 +172,37 @@ const ProjectsSection = () => {
   const renderProjectCard = (project: Project, index: number) => (
     <Card 
       key={index} 
-      className={`group project-card transform transition-all duration-500 hover:rotate-1 glass overflow-hidden ${
-        hoveredIndex === index ? 'ring-2 ring-purple-500/50' : ''
+      className={`group project-card transform transition-all duration-500 hover:rotate-1 glass overflow-hidden relative ${
+        hoveredIndex === index ? 'ring-2 ring-purple-500/50 shadow-2xl shadow-purple-500/30' : ''
       } ${
         project.featured ? 'border-2 border-gradient-to-r from-purple-500 to-pink-500 shadow-2xl shadow-purple-500/20' : ''
       }`}
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
     >
-      <CardHeader className="pb-2 p-3 sm:p-4 md:p-6">
+      {/* Gradient overlay on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"></div>
+      
+      <CardHeader className="pb-3 p-5 md:p-6 relative z-10">
         <div className="flex items-center justify-between">
-          <CardTitle className={`text-gradient ${project.featured ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'}`}>
+          <CardTitle className={`text-gradient ${project.featured ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'} font-bold`}>
             {project.title}
           </CardTitle>
           {project.featured && (
-            <Badge variant="secondary" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-0 flex items-center gap-1">
-              <Star className="h-3 w-3" />
+            <Badge variant="secondary" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-0 flex items-center gap-1 shadow-lg hover:shadow-glow transition-shadow duration-300">
+              <Star className="h-3 w-3 animate-pulse" />
               Featured
             </Badge>
           )}
         </div>
       </CardHeader>
-      <CardContent className="space-y-3 sm:space-y-4 pt-0 p-3 sm:p-4 md:p-6">
-        <AspectRatio ratio={16/9} className="image-zoom-container">
-          <div className="relative w-full h-full rounded-md overflow-hidden">
+      <CardContent className="space-y-4 pt-0 p-5 md:p-6 relative z-10">
+        <AspectRatio ratio={16/9} className="image-zoom-container rounded-lg overflow-hidden">
+          <div className="relative w-full h-full rounded-lg overflow-hidden bg-gradient-to-br from-purple-500/10 to-pink-500/10">
             <img 
               src={project.image} 
               alt={project.title}
-              className="absolute inset-0 w-full h-full object-cover image-zoom"
+              className="absolute inset-0 w-full h-full object-cover image-zoom transition-transform duration-700"
               loading="lazy"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -208,14 +211,14 @@ const ProjectsSection = () => {
               }}
             />
             {project.video && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500">
                 <Button 
                   variant="ghost" 
                   size="icon" 
-                  className="text-white hover:text-primary hover:bg-black/50 rounded-full transition-all duration-300 hover:scale-110 h-16 w-16 sm:h-20 sm:w-20"
+                  className="text-white hover:text-primary hover:bg-white/20 rounded-full transition-all duration-300 hover:scale-125 h-16 w-16 sm:h-20 sm:w-20 shadow-2xl"
                   onClick={() => setOpenVideo(project.video)}
                 >
-                  <PlayCircle className="drop-shadow-lg h-12 w-12 sm:h-16 sm:w-16" />
+                  <PlayCircle className="drop-shadow-2xl h-12 w-12 sm:h-16 sm:w-16 filter drop-shadow-glow" />
                   <span className="sr-only">Play video</span>
                 </Button>
               </div>
@@ -223,16 +226,16 @@ const ProjectsSection = () => {
           </div>
         </AspectRatio>
         
-        <CardDescription className="text-muted-foreground font-medium text-xs sm:text-sm">
+        <CardDescription className="text-muted-foreground group-hover:text-foreground transition-colors duration-300 font-medium text-sm leading-relaxed">
           {project.description}
         </CardDescription>
         
         {project.tech && (
-          <div className="flex flex-wrap gap-1 mt-2">
+          <div className="flex flex-wrap gap-2 mt-3">
             {project.tech.map((tech, i) => (
               <span 
                 key={i} 
-                className="px-2 py-0.5 sm:py-1 rounded-full bg-purple-500/20 text-purple-700 dark:text-purple-300 border border-purple-500/30 text-xs"
+                className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-700 dark:text-purple-300 border border-purple-500/30 text-xs font-medium hover:bg-purple-500/30 hover:scale-105 transition-all duration-300 cursor-default"
               >
                 {tech}
               </span>
@@ -240,38 +243,38 @@ const ProjectsSection = () => {
           </div>
         )}
         
-        <div className="flex flex-col xs:flex-row gap-2 pt-2">
+        <div className="flex flex-col xs:flex-row gap-3 pt-3">
           <Button 
             variant="outline" 
             size="sm"
             asChild 
-            className="group transition-all duration-300 hover:bg-purple-500/20 hover:text-foreground text-xs sm:text-sm"
+            className="group/btn transition-all duration-300 hover:bg-purple-500/20 hover:border-purple-500/50 hover:text-foreground hover:shadow-lg hover:scale-105 text-sm font-medium"
           >
             <a href={project.siteLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-              <Link className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
+              <Link className="mr-2 group-hover/btn:rotate-12 transition-transform duration-300" size={16} />
               <span>Visit Site</span>
-              <ArrowRight className="ml-1 h-3 w-0 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all duration-300" />
+              <ArrowRight className="ml-2 h-4 w-0 opacity-0 group-hover/btn:w-4 group-hover/btn:opacity-100 transition-all duration-300" />
             </a>
           </Button>
           <Button 
             variant="outline" 
             size="sm"
             asChild 
-            className="group transition-all duration-300 hover:bg-pink-500/20 hover:text-foreground text-xs sm:text-sm"
+            className="group/btn transition-all duration-300 hover:bg-pink-500/20 hover:border-pink-500/50 hover:text-foreground hover:shadow-lg hover:scale-105 text-sm font-medium"
           >
             {project.video ? (
               <a onClick={(e) => {
                 e.preventDefault();
                 setOpenVideo(project.video);
               }} href="#" className="flex items-center">
-                <PlayCircle className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
+                <PlayCircle className="mr-2 group-hover/btn:rotate-12 transition-transform duration-300" size={16} />
                 <span>Live Demo</span>
               </a>
             ) : (
               <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                <ExternalLink className="mr-1 group-hover:rotate-12 transition-transform duration-300" size={14} />
+                <ExternalLink className="mr-2 group-hover/btn:rotate-12 transition-transform duration-300" size={16} />
                 <span>Live Demo</span>
-                <ArrowRight className="ml-1 h-3 w-0 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all duration-300" />
+                <ArrowRight className="ml-2 h-4 w-0 opacity-0 group-hover/btn:w-4 group-hover/btn:opacity-100 transition-all duration-300" />
               </a>
             )}
           </Button>
@@ -281,18 +284,18 @@ const ProjectsSection = () => {
   );
 
   return (
-    <section className="py-12 sm:py-16 px-3 sm:px-4 bg-secondary/50" id="projects">
+    <section className="py-16 sm:py-20 px-4 sm:px-6 md:px-8 bg-secondary/50 parallax-section" id="projects">
       <div className="container mx-auto max-w-7xl">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-center bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-center bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent animate-fade-in">
           Projects
         </h2>
-        <p className="text-center text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto px-2 text-sm sm:text-base">
+        <p className="text-center text-muted-foreground mb-10 sm:mb-14 max-w-2xl mx-auto px-4 text-base md:text-lg leading-relaxed">
           Explore my recent work crafting responsive, high-performing websites for businesses across different industries
         </p>
         
         <div 
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8" 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 lg:gap-8" 
           {...(!isMobile && { 'data-animate': true })}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}

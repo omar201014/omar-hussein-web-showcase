@@ -20,21 +20,22 @@ const EducationSection = () => {
   ];
 
   return (
-    <section className="py-12 md:py-16 px-2 sm:px-4 bg-secondary/50" id="education">
-      <div className="container mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold mb-2 text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Education</h2>
-        <p className="text-sm md:text-base text-center text-muted-foreground mb-6 md:mb-10 max-w-2xl mx-auto">
+    <section className="py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-secondary/50 parallax-section" id="education">
+      <div className="container mx-auto max-w-6xl">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-fade-in">Education</h2>
+        <p className="text-base md:text-lg text-center text-muted-foreground mb-10 md:mb-14 max-w-2xl mx-auto px-4 leading-relaxed">
           Academic qualifications forming the foundation of my technical knowledge
         </p>
         
-        <div className="grid gap-4 md:gap-6" data-animate>
+        <div className="grid gap-6 md:gap-8" data-animate>
           {education.map((edu, index) => (
             <Card 
               key={index} 
-              className="glass group hover:bg-purple-500/10 transition-all duration-500 transform hover:scale-[1.02] card-3d"
+              className="glass group hover:bg-purple-500/10 transition-all duration-500 transform hover:scale-[1.02] overflow-hidden relative"
               data-stagger
             >
-              <CardHeader className="flex flex-col md:flex-row md:items-center md:justify-between p-4 md:p-6 gap-3">
+              <div className="absolute inset-0 bg-gradient-to-bl from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardHeader className="flex flex-col md:flex-row md:items-center md:justify-between p-5 md:p-8 gap-4 relative z-10">
                 <div className="flex items-start md:items-center gap-3">
                   <div className="p-2 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 text-white flex-shrink-0">
                     <GraduationCap className="h-4 w-4 md:h-5 md:w-5" />
@@ -73,7 +74,7 @@ const EducationSection = () => {
                 </div>
               </CardHeader>
               {edu.description && (
-                <CardContent className="p-4 md:p-6 pt-0">
+                <CardContent className="p-5 md:p-8 pt-0 relative z-10">
                   <div className="pl-4 md:pl-10 relative">
                     <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500/80 to-pink-500/40"></div>
                     <p className="text-xs md:text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">{edu.description}</p>

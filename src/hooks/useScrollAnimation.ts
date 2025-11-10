@@ -4,19 +4,23 @@ import { useEffect, useRef, useCallback } from 'react';
 export const useScrollAnimation = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const animatedElementsRef = useRef<Set<Element>>(new Set());
+  const rafRef = useRef<number | null>(null);
 
   const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !animatedElementsRef.current.has(entry.target)) {
-        animatedElementsRef.current.add(entry.target);
-        
-        // Batch DOM updates
-        requestAnimationFrame(() => {
+    // Cancel any pending animation frames
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+    }
+
+    rafRef.current = requestAnimationFrame(() => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !animatedElementsRef.current.has(entry.target)) {
+          animatedElementsRef.current.add(entry.target);
+          
           entry.target.classList.add('animate-in');
           
           // If this is a project card itself, just animate it
           if (entry.target.classList.contains('project-card')) {
-            // Already added animate-in class above
             observerRef.current?.unobserve(entry.target);
             return;
           }
@@ -29,7 +33,7 @@ export const useScrollAnimation = () => {
                 requestAnimationFrame(() => {
                   card.classList.add('animate-in');
                 });
-              }, 120 * index); // Smooth sequential stagger
+              }, 100 * index); // Faster stagger for better performance
             });
           }
           
@@ -38,20 +42,20 @@ export const useScrollAnimation = () => {
           if (children.length) {
             children.forEach((child, index) => {
               const element = child as HTMLElement;
-              element.style.transitionDelay = `${0.05 + (index * 0.08)}s`;
-              element.style.transitionDuration = '0.6s';
+              element.style.transitionDelay = `${0.05 + (index * 0.06)}s`;
+              element.style.transitionDuration = '0.5s';
               requestAnimationFrame(() => {
                 element.classList.add('animate-in');
               });
             });
           }
-        });
-        
-        // Unobserve after animation to free memory
-        setTimeout(() => {
-          observerRef.current?.unobserve(entry.target);
-        }, 1000);
-      }
+          
+          // Unobserve after animation to free memory
+          setTimeout(() => {
+            observerRef.current?.unobserve(entry.target);
+          }, 800);
+        }
+      });
     });
   }, []);
 
@@ -61,8 +65,8 @@ export const useScrollAnimation = () => {
       if (!observerRef.current) {
         // Optimized settings for smooth scroll-triggered animations
         observerRef.current = new IntersectionObserver(handleIntersection, {
-          threshold: 0.15, // Trigger when 15% visible
-          rootMargin: '0px 0px -100px 0px', // Only trigger when scrolled into view
+          threshold: 0.1, // Trigger earlier for smoother feel
+          rootMargin: '0px 0px -80px 0px', // Trigger when scrolled into view
         });
       }
 
@@ -88,10 +92,13 @@ export const useScrollAnimation = () => {
 
     // Use RAF to ensure DOM is ready and CSS is applied
     requestAnimationFrame(() => {
-      setTimeout(setupObserver, 50);
+      setTimeout(setupObserver, 30); // Reduced delay for faster setup
     });
 
     return () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
       if (observerRef.current) {
         observerRef.current.disconnect();
         observerRef.current = null;
