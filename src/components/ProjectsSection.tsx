@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Link, ExternalLink, PlayCircle, ArrowRight, Star } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 interface Project {
   title: string;
@@ -23,6 +24,7 @@ const ProjectsSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+    useScrollAnimation();
 
   const projects: Project[] = [
     {
@@ -90,14 +92,6 @@ const ProjectsSection = () => {
       siteLink: "https://primalfitness.ae",
       demoLink: "https://primalfitness.ae",
       tech: ["WordPress", "Scheduling System", "Responsive Design"]
-    },
-    {
-      title: "Dawenha.store",
-      description: "Rebuilt Dawenha.net with WordPress for streamlined CMS functionality.",
-      image: "lovable-uploads/dawenha store.webp",
-      siteLink: "https://drive.google.com/file/d/16XVFU601uSs25OL3eeAZVtuRbZma3s4r/view",
-      demoLink: "https://drive.google.com/file/d/16XVFU601uSs25OL3eeAZVtuRbZma3s4r/view",
-      tech: ["WordPress", "WooCommerce", "Elementor"]
     },
     {
       title: "As Clinic",
