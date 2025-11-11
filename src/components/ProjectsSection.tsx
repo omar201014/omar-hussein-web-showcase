@@ -144,11 +144,13 @@ const ProjectsSection = () => {
       const cardElement = card as HTMLElement;
       if (rect.left <= e.clientX && e.clientX <= rect.right && 
           rect.top <= e.clientY && e.clientY <= rect.bottom) {
-        cardElement.style.transform = `perspective(1000px) rotateY(${(x - rect.width / 2) / 25}deg) rotateX(${-(y - rect.height / 2) / 25}deg) scale3d(1.02, 1.02, 1.02)`;
-        cardElement.style.transition = 'transform 0.1s ease';
+        const rotateY = (x - rect.width / 2) / 20;
+        const rotateX = -(y - rect.height / 2) / 20;
+        cardElement.style.transform = `perspective(1200px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale3d(1.03, 1.03, 1.03) translateZ(20px)`;
+        cardElement.style.transition = 'transform 0.1s cubic-bezier(0.23, 1, 0.32, 1)';
       } else {
-        cardElement.style.transform = '';
-        cardElement.style.transition = 'transform 0.5s ease';
+        cardElement.style.transform = 'perspective(1200px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1) translateZ(0)';
+        cardElement.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
       }
     });
   };
@@ -158,8 +160,8 @@ const ProjectsSection = () => {
     const cards = containerRef.current.querySelectorAll('.project-card');
     cards.forEach((card) => {
       const cardElement = card as HTMLElement;
-      cardElement.style.transform = '';
-      cardElement.style.transition = 'transform 0.5s ease';
+      cardElement.style.transform = 'perspective(1200px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1) translateZ(0)';
+      cardElement.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
     });
   };
 
@@ -175,7 +177,7 @@ const ProjectsSection = () => {
       onMouseLeave={() => setHoveredIndex(null)}
     >
       {/* Gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/3 to-pink-500/3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"></div>
       
       <CardHeader className="pb-3 p-5 md:p-6 relative z-10">
         <div className="flex items-center justify-between">
