@@ -226,24 +226,7 @@
   animation: float 6s ease-in-out infinite;
 }
 
-/* Project cards smooth fade-in slide-up animation with GPU acceleration */
-.project-card:not(.animate-in) {
-   opacity: 0;
-  transform: translateY(70px) scale(0.9) translateZ(0);
- 
-}
-
-.project-card {
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-  transform: translateZ(0);
-}
-
-.project-card.animate-in {
-  opacity: 1;
-  transform: translateY(0) scale(1) translateZ(0);
-}
+/* Project cards - animation removed to prevent hover conflicts */
 
 /* Mobile optimizations - simplified animations for better performance */
 @media (max-width: 768px) {
@@ -251,9 +234,7 @@
   [data-animate]:not(.animate-in),
   [data-animate],
   [data-stagger]:not(.animate-in),
-  [data-stagger],
-  .project-card:not(.animate-in),
-  .project-card {
+  [data-stagger] {
     opacity: 1 !important;
     transform: translateY(0) scale(1) translateZ(0) !important;
     transition: none !important;
