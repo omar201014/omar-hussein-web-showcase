@@ -168,10 +168,10 @@ const ProjectsSection = () => {
   const renderProjectCard = (project: Project, index: number) => (
     <Card 
       key={index} 
-      className={`group project-card transform transition-all duration-500 hover:rotate-1 glass overflow-hidden relative ${
-        hoveredIndex === index ? 'ring-2 ring-purple-500/50 shadow-2xl shadow-purple-500/30' : ''
+      className={`group project-card transform transition-all duration-500 bg-card/95 backdrop-blur-md border border-border/50 hover:border-purple-500/30 overflow-hidden relative hover:shadow-2xl hover:shadow-purple-500/20 ${
+        hoveredIndex === index ? 'ring-2 ring-purple-500/50' : ''
       } ${
-        project.featured ? 'border-2 border-gradient-to-r from-purple-500 to-pink-500 shadow-2xl shadow-purple-500/20' : ''
+        project.featured ? 'border-2 border-purple-500/40 shadow-xl shadow-purple-500/10' : ''
       }`}
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
