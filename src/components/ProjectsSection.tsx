@@ -176,9 +176,6 @@ const ProjectsSection = () => {
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
     >
-      {/* Gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.02] to-pink-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"></div>
-      
       <CardHeader className="pb-3 p-5 md:p-6 relative z-10">
         <div className="flex items-center justify-between">
           <CardTitle className={`text-gradient ${project.featured ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'} font-bold`}>
