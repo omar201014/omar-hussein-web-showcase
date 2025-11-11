@@ -132,43 +132,17 @@ const ProjectsSection = () => {
   ];
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!containerRef.current || isMobile) return;
-    
-    const cards = containerRef.current.querySelectorAll('.project-card');
-    
-    cards.forEach((card) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const cardElement = card as HTMLElement;
-      if (rect.left <= e.clientX && e.clientX <= rect.right && 
-          rect.top <= e.clientY && e.clientY <= rect.bottom) {
-        const rotateY = (x - rect.width / 2) / 20;
-        const rotateX = -(y - rect.height / 2) / 20;
-        cardElement.style.transform = `perspective(1200px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale3d(1.03, 1.03, 1.03) translateZ(20px)`;
-        cardElement.style.transition = 'transform 0.1s cubic-bezier(0.23, 1, 0.32, 1)';
-      } else {
-        cardElement.style.transform = 'perspective(1200px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1) translateZ(0)';
-        cardElement.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
-      }
-    });
+    // Disabled to prevent clipping issues
   };
   
   const handleMouseLeave = () => {
-    if (!containerRef.current || isMobile) return;
-    const cards = containerRef.current.querySelectorAll('.project-card');
-    cards.forEach((card) => {
-      const cardElement = card as HTMLElement;
-      cardElement.style.transform = 'perspective(1200px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1) translateZ(0)';
-      cardElement.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
-    });
+    // Disabled to prevent clipping issues
   };
 
   const renderProjectCard = (project: Project, index: number) => (
     <Card 
       key={index} 
-      className={`group project-card transform transition-all duration-500 bg-card/95 backdrop-blur-md border border-border/50 hover:border-purple-500/30 overflow-hidden relative hover:shadow-2xl hover:shadow-purple-500/20 ${
+      className={`group project-card transition-all duration-300 bg-card/95 backdrop-blur-md border border-border/50 hover:border-purple-500/50 overflow-hidden relative hover:shadow-2xl hover:shadow-purple-500/20 hover:-translate-y-2 hover:scale-[1.02] ${
         hoveredIndex === index ? 'ring-2 ring-purple-500/50' : ''
       } ${
         project.featured ? 'border-2 border-purple-500/40 shadow-xl shadow-purple-500/10' : ''
@@ -290,8 +264,6 @@ const ProjectsSection = () => {
           ref={containerRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 lg:gap-8" 
           {...(!isMobile && { 'data-animate': true })}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
         >
           {projects.map((project, index) => renderProjectCard(project, index))}
         </div>
