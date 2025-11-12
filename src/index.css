@@ -4,32 +4,32 @@
  
 @layer base {
   :root {
-    /* Light mode variables - Enhanced for better visibility */
+    /* Light mode variables - Vibrant and clear */
     --background: 0 0% 100%;
-    --foreground: 267 45% 8%;
+    --foreground: 267 80% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 267 45% 8%;
+    --card-foreground: 267 80% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 267 45% 8%;
-    --primary: 252 70% 60%;
+    --popover-foreground: 267 80% 10%;
+    --primary: 252 85% 55%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 250 50% 96%;
-    --secondary-foreground: 267 45% 8%;
-    --muted: 250 40% 94%;
-    --muted-foreground: 267 25% 35%;
-    --accent: 252 90% 95%;
-    --accent-foreground: 267 45% 8%;
-    --destructive: 0 72% 45%;
+    --secondary: 250 60% 97%;
+    --secondary-foreground: 267 80% 10%;
+    --muted: 250 50% 95%;
+    --muted-foreground: 267 40% 30%;
+    --accent: 252 100% 96%;
+    --accent-foreground: 267 80% 10%;
+    --destructive: 0 85% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 250 30% 88%;
-    --input: 250 30% 90%;
-    --ring: 252 70% 60%;
+    --border: 250 40% 85%;
+    --input: 250 40% 88%;
+    --ring: 252 85% 55%;
     --radius: 0.75rem;
     
     /* Enhanced visual variables */
-    --glow-primary: 252 70% 60%;
-    --glow-secondary: 320 75% 55%;
-    --shadow-elegant: 0 20px 60px -15px rgba(138, 43, 226, 0.35);
+    --glow-primary: 252 85% 55%;
+    --glow-secondary: 320 85% 50%;
+    --shadow-elegant: 0 20px 60px -15px rgba(124, 58, 237, 0.4);
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
