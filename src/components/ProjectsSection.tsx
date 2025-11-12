@@ -131,24 +131,42 @@ const ProjectsSection = () => {
     }
   ];
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    // Disabled to prevent clipping issues
+  const handleMouseMove = (e: React.MouseEvent, index: number) => {
+    if (isMobile) return;
+    
+    const card = e.currentTarget as HTMLElement;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = ((y - centerY) / centerY) * 8;
+    const rotateY = ((x - centerX) / centerX) * -8;
+    
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
   };
   
-  const handleMouseLeave = () => {
-    // Disabled to prevent clipping issues
+  const handleMouseLeave = (e: React.MouseEvent) => {
+    if (isMobile) return;
+    
+    const card = e.currentTarget as HTMLElement;
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
   };
 
   const renderProjectCard = (project: Project, index: number) => (
     <Card 
       key={index} 
-      className={`group project-card transition-all duration-300 bg-card/95 backdrop-blur-md border border-border/50 hover:border-purple-500/50 overflow-hidden relative hover:shadow-2xl hover:shadow-purple-500/20 hover:-translate-y-2 hover:scale-[1.02] ${
+      className={`group project-card transition-all duration-500 bg-background/40 backdrop-blur-xl border border-white/20 dark:border-white/10 hover:border-purple-500/50 overflow-visible relative hover:shadow-2xl hover:shadow-purple-500/20 ${
         hoveredIndex === index ? 'ring-2 ring-purple-500/50' : ''
       } ${
         project.featured ? 'border-2 border-purple-500/40 shadow-xl shadow-purple-500/10' : ''
       }`}
+      style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
+      onMouseMove={(e) => handleMouseMove(e, index)}
+      onMouseLeave={handleMouseLeave}
       onMouseEnter={() => setHoveredIndex(index)}
-      onMouseLeave={() => setHoveredIndex(null)}
     >
       <CardHeader className="pb-3 p-5 md:p-6 relative z-10">
         <div className="flex items-center justify-between">
