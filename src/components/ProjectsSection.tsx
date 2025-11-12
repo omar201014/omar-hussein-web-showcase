@@ -142,10 +142,10 @@ const ProjectsSection = () => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    const rotateX = ((y - centerY) / centerY) * 8;
-    const rotateY = ((x - centerX) / centerX) * -8;
+    const rotateX = ((y - centerY) / centerY) * 15;
+    const rotateY = ((x - centerX) / centerX) * -15;
     
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(40px)`;
   };
   
   const handleMouseLeave = (e: React.MouseEvent) => {
@@ -158,7 +158,7 @@ const ProjectsSection = () => {
   const renderProjectCard = (project: Project, index: number) => (
     <Card 
       key={index} 
-      className={`group project-card transition-all duration-500 bg-background/40 backdrop-blur-xl border border-white/20 dark:border-white/10 hover:border-purple-500/50 overflow-visible relative hover:shadow-2xl hover:shadow-purple-500/20 ${
+      className={`group project-card transition-all duration-500 bg-white/70 dark:bg-background/50 backdrop-blur-xl border border-white/20 dark:border-white/10 hover:border-purple-500/50 overflow-visible relative hover:shadow-2xl hover:shadow-purple-500/20 ${
         hoveredIndex === index ? 'ring-2 ring-purple-500/50' : ''
       } ${
         project.featured ? 'border-2 border-purple-500/40 shadow-xl shadow-purple-500/10' : ''
