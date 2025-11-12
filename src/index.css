@@ -6,19 +6,19 @@
   :root {
     /* Light mode variables - Vibrant and clear */
     --background: 0 0% 100%;
-    --foreground: 267 80% 10%;
+    --foreground: 267 80% 5%;
     --card: 0 0% 100%;
-    --card-foreground: 267 80% 10%;
+    --card-foreground: 267 80% 5%;
     --popover: 0 0% 100%;
-    --popover-foreground: 267 80% 10%;
+    --popover-foreground: 267 80% 5%;
     --primary: 252 85% 55%;
     --primary-foreground: 0 0% 100%;
     --secondary: 250 60% 97%;
-    --secondary-foreground: 267 80% 10%;
+    --secondary-foreground: 267 80% 25%;
     --muted: 250 50% 95%;
-    --muted-foreground: 267 40% 30%;
+    --muted-foreground: 267 80% 25%;
     --accent: 252 100% 96%;
-    --accent-foreground: 267 80% 10%;
+    --accent-foreground: 267 80% 5%;
     --destructive: 0 85% 50%;
     --destructive-foreground: 0 0% 100%;
     --border: 250 40% 85%;
