@@ -48,9 +48,9 @@ const ExperienceSection = () => {
               <CardHeader className="relative p-5 md:p-8 z-10">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-2">
                   <CardTitle className="text-lg md:text-xl group-hover:text-gradient transition-all duration-300">{exp.title}</CardTitle>
-                  <div className="bg-purple-500/20 text-purple-300 py-1 px-3 rounded-full text-xs flex items-center w-fit">
+                  <div className="bg-primary/15 text-primary dark:text-purple-300 py-1 px-3 rounded-full text-xs flex items-center w-fit border border-primary/20">
                     <Calendar className="mr-1 h-3.5 w-3.5" />
-                    <span>{exp.period}</span>
+                    <span className="font-medium">{exp.period}</span>
                   </div>
                 </div>
                 

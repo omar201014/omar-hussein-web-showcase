@@ -67,9 +67,9 @@ const EducationSection = () => {
                       />
                     </div>
                   )}
-                  <div className="bg-purple-500/20 text-purple-300 py-1 px-3 rounded-full text-xs flex items-center w-fit">
+                  <div className="bg-primary/15 text-primary dark:text-purple-300 py-1 px-3 rounded-full text-xs flex items-center w-fit border border-primary/20">
                     <Calendar className="mr-1 h-3.5 w-3.5 flex-shrink-0" />
-                    <span>{edu.period}</span>
+                    <span className="font-medium">{edu.period}</span>
                   </div>
                 </div>
               </CardHeader>
