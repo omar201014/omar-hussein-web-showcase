@@ -142,17 +142,17 @@ const ProjectsSection = () => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    const rotateX = ((y - centerY) / centerY) * 15;
-    const rotateY = ((x - centerX) / centerX) * -15;
+    const rotateX = ((y - centerY) / centerY) * 25;
+    const rotateY = ((x - centerX) / centerX) * -25;
     
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(40px)`;
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(60px) scale(1.02)`;
   };
   
   const handleMouseLeave = (e: React.MouseEvent) => {
     if (isMobile) return;
     
     const card = e.currentTarget as HTMLElement;
-    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+    card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)';
   };
 
   const renderProjectCard = (project: Project, index: number) => (

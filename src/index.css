@@ -4,32 +4,32 @@
  
 @layer base {
   :root {
-    /* Light mode variables */
+    /* Light mode variables - Enhanced for better visibility */
     --background: 0 0% 100%;
-    --foreground: 267 35% 12%;
+    --foreground: 267 45% 8%;
     --card: 0 0% 100%;
-    --card-foreground: 267 35% 12%;
+    --card-foreground: 267 45% 8%;
     --popover: 0 0% 100%;
-    --popover-foreground: 267 35% 12%;
-    --primary: 252 56% 75%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 267 35% 12%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 5% 54.9%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 267 35% 12%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 4.8% 85.9%;
-    --input: 240 4.8% 85.9%;
-    --ring: 240 4.9% 83.9%;
+    --popover-foreground: 267 45% 8%;
+    --primary: 252 70% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 250 50% 96%;
+    --secondary-foreground: 267 45% 8%;
+    --muted: 250 40% 94%;
+    --muted-foreground: 267 25% 35%;
+    --accent: 252 90% 95%;
+    --accent-foreground: 267 45% 8%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 250 30% 88%;
+    --input: 250 30% 90%;
+    --ring: 252 70% 60%;
     --radius: 0.75rem;
     
     /* Enhanced visual variables */
-    --glow-primary: 252 56% 75%;
-    --glow-secondary: 320 70% 65%;
-    --shadow-elegant: 0 20px 60px -15px rgba(162, 89, 255, 0.3);
+    --glow-primary: 252 70% 60%;
+    --glow-secondary: 320 75% 55%;
+    --shadow-elegant: 0 20px 60px -15px rgba(138, 43, 226, 0.35);
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
