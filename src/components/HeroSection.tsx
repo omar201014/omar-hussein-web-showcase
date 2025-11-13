@@ -4,6 +4,7 @@ import BackgroundPattern from './BackgroundPattern';
 import { useTypewriter } from '@/hooks/useTypewriter';
 import { useState, useEffect } from 'react';
 import { ThemeToggle } from './ThemeToggle';
+import { MobileNav } from './MobileNav';
 
 const HeroSection = () => {
   const typedName = useTypewriter("Omar Hussein", 180);
@@ -37,6 +38,7 @@ const HeroSection = () => {
 
   return (
     <section 
+      id="hero"
       className="min-h-screen flex flex-col justify-center items-start p-8 md:p-16 relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: 'url("lovable-uploads/artistic-blurry-colorful-wallpaper-background.webp")'
@@ -47,7 +49,7 @@ const HeroSection = () => {
       
       <BackgroundPattern />
       
-      {/* Header with Logo and Theme Toggle */}
+      {/* Header with Logo, Theme Toggle, and Mobile Nav */}
       <div className="absolute top-8 left-8 right-8 z-20 flex justify-between items-center">
         <div>
           <img 
@@ -61,7 +63,10 @@ const HeroSection = () => {
             className="h-12 md:h-16 hidden dark:block" 
           />
         </div>
-        <ThemeToggle />
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <MobileNav />
+        </div>
       </div>
       
       <div className="container mx-auto max-w-6xl relative z-10">
