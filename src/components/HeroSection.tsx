@@ -183,10 +183,10 @@ const HeroSection = () => {
           onClick={scrollToNextSection}
         >
           <div className="flex items-center gap-2 mb-2">
-            <Mouse className="h-5 w-5 text-purple-300" />
-            <span className="text-sm text-purple-300">Scroll Down</span>
+            <Mouse className="h-5 w-5 text-primary" />
+            <span className="text-sm text-primary font-medium">Scroll Down</span>
           </div>
-          <ChevronDown className="h-6 w-6 text-purple-300 animate-bounce" />
+          <ChevronDown className="h-6 w-6 text-primary animate-bounce" />
         </div>
       </div>
     </section>
