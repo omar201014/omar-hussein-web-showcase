@@ -4,32 +4,32 @@
  
 @layer base {
   :root {
-    /* Light mode variables - Vibrant and clear */
+    /* Light mode variables - Clear and professional */
     --background: 0 0% 100%;
-    --foreground: 267 80% 5%;
+    --foreground: 220 15% 15%;
     --card: 0 0% 100%;
-    --card-foreground: 267 80% 5%;
+    --card-foreground: 220 15% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 267 80% 5%;
+    --popover-foreground: 220 15% 15%;
     --primary: 252 85% 55%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 250 60% 97%;
-    --secondary-foreground: 267 80% 25%;
-    --muted: 250 50% 95%;
-    --muted-foreground: 267 80% 25%;
-    --accent: 252 100% 96%;
-    --accent-foreground: 267 80% 5%;
+    --secondary: 220 15% 95%;
+    --secondary-foreground: 220 15% 20%;
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 10% 40%;
+    --accent: 252 90% 96%;
+    --accent-foreground: 220 15% 15%;
     --destructive: 0 85% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 250 40% 85%;
-    --input: 250 40% 88%;
+    --border: 220 15% 88%;
+    --input: 220 15% 92%;
     --ring: 252 85% 55%;
     --radius: 0.75rem;
     
     /* Enhanced visual variables */
     --glow-primary: 252 85% 55%;
-    --glow-secondary: 320 85% 50%;
-    --shadow-elegant: 0 20px 60px -15px rgba(124, 58, 237, 0.4);
+    --glow-secondary: 280 70% 60%;
+    --shadow-elegant: 0 20px 60px -15px rgba(124, 58, 237, 0.3);
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -81,7 +81,7 @@
 
   /* Add light mode background */
   body.light {
-    background: radial-gradient(circle at top, hsl(0 0% 100%), hsl(0 0% 95%));
+    background: radial-gradient(circle at top, hsl(220 15% 98%), hsl(220 15% 92%));
     min-height: 100vh;
     /* Optimize scroll performance */
     will-change: scroll-position;
@@ -130,9 +130,9 @@
 }
 
 .glass {
-  @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl;
+  @apply bg-white/80 dark:bg-white/10 backdrop-blur-lg border border-border rounded-xl;
   transition: var(--transition-smooth);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
   will-change: transform, box-shadow;
   transform: translateZ(0); /* Force GPU acceleration */
 }
