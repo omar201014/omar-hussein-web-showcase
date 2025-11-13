@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, Home, Briefcase, FolderKanban, Code, GraduationCap } from 'lucide-react';
+import { Menu, Home, Briefcase, FolderKanban, Code, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -31,16 +31,16 @@ export const MobileNav = () => {
 
       const element = document.getElementById(sectionId);
       if (element) {
-        const offset = 80;
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - offset;
+        const headerOffset = 20;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
         window.scrollTo({
           top: offsetPosition,
           behavior: 'smooth',
         });
       }
-    }, 100);
+    }, 150);
   };
 
   return (
@@ -49,31 +49,34 @@ export const MobileNav = () => {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden text-foreground hover:bg-primary/10"
+          className="md:hidden hover:bg-primary/10 hover:text-primary transition-all"
           aria-label="Open navigation menu"
         >
-          <Menu className="h-6 w-6" />
+          <Menu className="h-5 w-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-        <SheetHeader>
-          <SheetTitle className="text-left text-xl font-bold text-primary">
-            Navigation
+      <SheetContent side="right" className="w-[280px] border-l border-border/50 backdrop-blur-xl bg-background/95">
+        <SheetHeader className="border-b border-border/30 pb-4">
+          <SheetTitle className="text-xl font-bold text-primary text-left">
+            Menu
           </SheetTitle>
         </SheetHeader>
-        <nav className="mt-8 flex flex-col space-y-3">
-          {navigationItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className="flex items-center space-x-4 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors text-left group"
-            >
-              <item.icon className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
-              <span className="text-base font-medium text-foreground group-hover:text-primary transition-colors">
-                {item.name}
-              </span>
-            </button>
-          ))}
+        <nav className="mt-6 flex flex-col space-y-2">
+          {navigationItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-all text-left group border border-transparent hover:border-primary/20"
+              >
+                <Icon className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+                <span className="text-base font-medium text-foreground group-hover:text-primary transition-colors">
+                  {item.name}
+                </span>
+              </button>
+            );
+          })}
         </nav>
       </SheetContent>
     </Sheet>
