@@ -114,8 +114,8 @@ const ProjectsSection = () => {
     {
       title: "ARCAVE Design",
       description: "Abu Dhabi-based commercial interior design studio for clinics, offices, and cafes.",
-      image: "/lovable-uploads/arcave.webp",
-      video: "/lovable-uploads/Arcave showcase.mp4",
+      image: "lovable-uploads/arcave.webp",
+      video: "lovable-uploads/Arcave showcase.mp4",
       siteLink: "https://design.arcave.ae/",
       demoLink: "https://design.arcave.ae/",
       tech: ["Bitrix24", "CRM", "Multilingual"]
