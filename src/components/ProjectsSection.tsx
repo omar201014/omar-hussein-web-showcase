@@ -99,7 +99,7 @@ const ProjectsSection = () => {
       image: "lovable-uploads/As Clinic.webp",
       video: "lovable-uploads/showcase AS.mp4",
       siteLink: "https://asclinic.ae",
-      demoLink: "https://demo.asclinic.ae",
+      demoLink: "https://asclinic.ae",
       tech: ["WordPress", "Custom Theme", "Appointment System"]
     },
     {
@@ -108,17 +108,17 @@ const ProjectsSection = () => {
       image: "lovable-uploads/Farbary Travel & Tourism – Luxury Trips 5-Star Services.webp",
       video: "lovable-uploads/Farbary showcase.mp4",
       siteLink: "https://farbary.ae",
-      demoLink: "https://demo.farbary.com",
+      demoLink: "https://farbary.ae",
       tech: ["WordPress", "Booking System", "Custom Design"]
     },
     {
-      title: "Al Qada Al Mutamayzoon Institute",
-      description: "Delivered tailored learning solutions in AI, Business, and English.",
-      image: "lovable-uploads/Al Qada Al Mutamayzoon Institute Certified Language Courses & AI Learning for Kids.webp",
-      video: "lovable-uploads/AlQada showcase.mp4",
-      siteLink: "https://leadersinstitutes.com",
-      demoLink: "https://demo.leadersinstitutes.com",
-      tech: ["WordPress", "LMS", "Multilingual"]
+      title: "ARCAVE Design",
+      description: "Abu Dhabi-based commercial interior design studio for clinics, offices, and cafes.",
+      image: "/lovable-uploads/arcave.webp",
+      video: "/lovable-uploads/Arcave showcase.mp4",
+      siteLink: "https://design.arcave.ae/",
+      demoLink: "https://design.arcave.ae/",
+      tech: ["Bitrix24", "CRM", "Multilingual"]
     },
     {
       title: "Eng. Abdullah Taj",
