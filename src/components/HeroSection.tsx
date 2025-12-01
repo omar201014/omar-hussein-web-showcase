@@ -39,7 +39,7 @@ const HeroSection = () => {
       className="min-h-screen flex flex-col justify-center items-start p-8 md:p-16 relative overflow-hidden"
     >
       {/* Semi-transparent overlay for content readability */}
-      <div className="absolute inset-0 bg-background/40 dark:bg-background/50 backdrop-blur-[1px]"></div>
+      <div className="absolute inset-0 bg-black/20 dark:bg-black/30"></div>
       
       {/* Header with Logo and Theme Toggle */}
       <div className="absolute top-8 left-8 right-8 z-20 flex justify-between items-center">

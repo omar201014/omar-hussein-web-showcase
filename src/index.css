@@ -66,21 +66,12 @@
     @apply border-border;
   }
   
+  html {
+    background: hsl(var(--background));
+  }
+  
   body {
     @apply bg-background text-foreground antialiased;
-  }
-
-  /* Apply radial gradient only in dark mode */
-  body.dark {
-    background: radial-gradient(circle at top, hsl(267 35% 12%), hsl(267 35% 4%));
-    min-height: 100vh;
-    will-change: scroll-position;
-    scroll-behavior: smooth;
-  }
-
-  /* Add light mode background */
-  body.light {
-    background: radial-gradient(circle at top, hsl(220 15% 98%), hsl(220 15% 92%));
     min-height: 100vh;
     will-change: scroll-position;
     scroll-behavior: smooth;
