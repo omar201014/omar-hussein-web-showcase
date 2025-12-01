@@ -74,7 +74,6 @@
   body.dark {
     background: radial-gradient(circle at top, hsl(267 35% 12%), hsl(267 35% 4%));
     min-height: 100vh;
-    /* Optimize scroll performance */
     will-change: scroll-position;
     scroll-behavior: smooth;
   }
@@ -83,7 +82,6 @@
   body.light {
     background: radial-gradient(circle at top, hsl(220 15% 98%), hsl(220 15% 92%));
     min-height: 100vh;
-    /* Optimize scroll performance */
     will-change: scroll-position;
     scroll-behavior: smooth;
   }
