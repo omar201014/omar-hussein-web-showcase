@@ -112,13 +112,13 @@ const ProjectsSection = () => {
       tech: ["WordPress", "Booking System", "Custom Design"]
     },
     {
-      title: "Al Qada Al Mutamayzoon Institute",
-      description: "Delivered tailored learning solutions in AI, Business, and English.",
-      image: "lovable-uploads/Al Qada Al Mutamayzoon Institute Certified Language Courses & AI Learning for Kids.webp",
-      video: "lovable-uploads/AlQada showcase.mp4",
-      siteLink: "https://leadersinstitutes.com",
-      demoLink: "https://demo.leadersinstitutes.com",
-      tech: ["WordPress", "LMS", "Multilingual"]
+      title: "Arcave",
+      description: "Creative design studio specializing in innovative digital solutions and brand experiences.",
+      image: "lovable-uploads/arcave.webp",
+      video: "lovable-uploads/Arcave showcase.mp4",
+      siteLink: "https://design.arcave.ae",
+      demoLink: "https://design.arcave.ae",
+      tech: ["WordPress", "Creative Agency", "Custom Design"]
     },
     {
       title: "Eng. Abdullah Taj",
