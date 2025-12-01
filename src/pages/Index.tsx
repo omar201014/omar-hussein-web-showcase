@@ -36,9 +36,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
       <Aurora speed={0.5} amplitude={1.2} blend={0.6} />
-      <div className="relative z-10">
-        <CustomCursor />
-        <HeroSection />
+      <CustomCursor />
+      <HeroSection />
       
       {/* Section divider */}
       <div className="section-divider"></div>
@@ -60,7 +59,6 @@ const Index = () => {
       </div>
       
       <Footer />
-      </div>
       
       {/* Scroll to top button */}
       <Button
