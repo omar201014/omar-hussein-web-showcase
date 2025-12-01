@@ -1,6 +1,5 @@
 import { Github, Linkedin, Mail, MapPin, Download, ChevronDown, Mouse, Phone } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import BackgroundPattern from './BackgroundPattern';
 import { useTypewriter } from '@/hooks/useTypewriter';
 import { useState, useEffect } from 'react';
 import { ThemeToggle } from './ThemeToggle';
@@ -37,15 +36,10 @@ const HeroSection = () => {
 
   return (
     <section 
-      className="min-h-screen flex flex-col justify-center items-start p-8 md:p-16 relative overflow-hidden bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: 'url("lovable-uploads/artistic-blurry-colorful-wallpaper-background.webp")'
-      }}
+      className="min-h-screen flex flex-col justify-center items-start p-8 md:p-16 relative overflow-hidden"
     >
-      {/* Theme-based overlay */}
-      <div className="absolute inset-0 bg-background/80 dark:bg-background/85 backdrop-blur-[2px]"></div>
-      
-      <BackgroundPattern />
+      {/* Semi-transparent overlay for content readability */}
+      <div className="absolute inset-0 bg-background/40 dark:bg-background/50 backdrop-blur-[1px]"></div>
       
       {/* Header with Logo and Theme Toggle */}
       <div className="absolute top-8 left-8 right-8 z-20 flex justify-between items-center">

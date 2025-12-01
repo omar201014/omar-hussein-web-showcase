@@ -1,5 +1,5 @@
 
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import HeroSection from "@/components/HeroSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -7,6 +7,7 @@ import SkillsSection from "@/components/SkillsSection";
 import EducationSection from "@/components/EducationSection";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import Aurora from "@/components/Aurora";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -33,9 +34,11 @@ const Index = () => {
   };
   
   return (
-    <div className="min-h-screen bg-background">
-      <CustomCursor />
-      <HeroSection />
+    <div className="min-h-screen bg-background relative">
+      <Aurora speed={0.5} amplitude={1.2} blend={0.6} />
+      <div className="relative z-10">
+        <CustomCursor />
+        <HeroSection />
       
       {/* Section divider */}
       <div className="section-divider"></div>
@@ -57,8 +60,9 @@ const Index = () => {
       </div>
       
       <Footer />
+      </div>
       
-      {/* Scroll to top button - Using React state instead of ref manipulation */}
+      {/* Scroll to top button */}
       <Button
         className={`fixed bottom-6 right-6 z-50 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white w-12 h-12 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg ${
           isScrolled ? 'opacity-100 visible' : 'opacity-0 invisible'
