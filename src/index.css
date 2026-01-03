@@ -73,8 +73,8 @@
   body {
     @apply bg-background text-foreground antialiased;
     min-height: 100vh;
-    will-change: scroll-position;
     scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
   }
   
   /* Hardware acceleration for smooth scrolling */

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback, memo } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
@@ -131,7 +131,7 @@ const ProjectsSection = () => {
     }
   ];
 
-  const handleMouseMove = (e: React.MouseEvent, index: number) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent, index: number) => {
     if (isMobile) return;
     
     const card = e.currentTarget as HTMLElement;
@@ -147,15 +147,15 @@ const ProjectsSection = () => {
     
     card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(80px) scale(1.05)`;
     card.style.boxShadow = '0 30px 60px -10px rgba(124, 58, 237, 0.5)';
-  };
+  }, [isMobile]);
   
-  const handleMouseLeave = (e: React.MouseEvent) => {
+  const handleMouseLeave = useCallback((e: React.MouseEvent) => {
     if (isMobile) return;
     
     const card = e.currentTarget as HTMLElement;
     card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)';
     card.style.boxShadow = '';
-  };
+  }, [isMobile]);
 
   const renderProjectCard = (project: Project, index: number) => (
     <Card 

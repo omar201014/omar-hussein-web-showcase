@@ -17,7 +17,7 @@ const HeroSection = () => {
       setScrollIndicatorOpacity(opacity);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -44,6 +44,8 @@ const HeroSection = () => {
       autoPlay
       loop
       muted
+      playsInline
+      preload="metadata"
       src="lovable-uploads/dark galaxy blue.mp4"
     />
 
@@ -56,12 +58,18 @@ const HeroSection = () => {
           <img 
             src="lovable-uploads/logo white.png" 
             alt="Omar Hussein Logo" 
-            className="h-12 md:h-16 block dark:hidden" 
+            className="h-12 md:h-16 block dark:hidden"
+            loading="eager"
+            width="64"
+            height="64"
           />
           <img 
             src="lovable-uploads/Logo Dark.png" 
             alt="Omar Hussein Logo" 
-            className="h-12 md:h-16 hidden dark:block" 
+            className="h-12 md:h-16 hidden dark:block"
+            loading="eager"
+            width="64"
+            height="64"
           />
         </div>
         <ThemeToggle />
@@ -170,9 +178,12 @@ const HeroSection = () => {
             <div className="relative rounded-full w-64 h-64 border-4 border-purple-500/30 overflow-hidden bg-white/10 backdrop-blur-lg shadow-xl hover:scale-105 transition-all duration-500 hover-glow">
               <img 
                 src="lovable-uploads/MyphotoHD suit enhanced.webp" 
-                alt="Omar Hussein" 
+                alt="Omar Hussein - Web Developer" 
                 className="object-contain w-full h-full"
                 style={{ backgroundColor: "white", height: "300px" }}
+                loading="eager"
+                width="256"
+                height="256"
               />
               <div className="absolute inset-0 ring-4 ring-purple-500/30 rounded-full"></div>
             </div>
