@@ -38,19 +38,19 @@ const HeroSection = () => {
     <section 
       className="min-h-screen flex flex-col justify-center items-start p-8 md:p-16 relative overflow-hidden"
     >
-          {/* Video Background */}
-    <video
-      className="absolute inset-0 w-full h-full object-cover"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      src="lovable-uploads/dark galaxy blue.mp4"
-    />
+      {/* Video Background */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover dark:opacity-100 opacity-40"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        src="lovable-uploads/dark galaxy blue.mp4"
+      />
 
-      {/* Semi-transparent overlay for content readability */}
-      <div className="absolute inset-0 bg-black/45 dark:bg-black/60"></div>
+      {/* Theme-aware overlay for content readability */}
+      <div className="absolute inset-0 bg-white/60 dark:bg-black/60"></div>
       
       {/* Header with Logo and Theme Toggle */}
       <div className="absolute top-8 left-8 right-8 z-20 flex justify-between items-center">
