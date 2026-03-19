@@ -122,14 +122,11 @@
   @apply bg-white/80 dark:bg-white/10 backdrop-blur-lg border border-border rounded-xl;
   transition: var(--transition-smooth);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-  will-change: transform, box-shadow;
-  transform: translateZ(0); /* Force GPU acceleration */
 }
 
-/* Modify glass hover for better text visibility */
 .glass:hover {
   box-shadow: var(--shadow-elegant);
-  transform: translateY(-2px) scale(1.005) translateZ(0);
+  transform: translateY(-2px);
 }
 
 /* Smooth fade-in slide-up entrance animations with GPU acceleration */
