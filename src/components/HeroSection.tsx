@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, MapPin, Download, ChevronDown, Mouse, Phone } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Download, ChevronDown, Mouse, Phone, ExternalLink } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useTypewriter } from '@/hooks/useTypewriter';
 import { useState, useEffect } from 'react';
@@ -168,6 +168,16 @@ const HeroSection = () => {
               >
                 <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow">
                   <Linkedin className="h-5 w-5" />
+                </Button>
+              </a>
+              <a 
+                href="https://www.upwork.com/freelancers/~0127c70a7dce1e5102?mp_source=share" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="transform hover:scale-110 transition-all duration-300"
+              >
+                <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow">
+                  <ExternalLink className="h-5 w-5" />
                 </Button>
               </a>
             </div>
