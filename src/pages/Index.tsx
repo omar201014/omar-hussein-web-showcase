@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import HeroSection from "@/components/HeroSection";
 import ExperienceSection from "@/components/ExperienceSection";
@@ -21,7 +20,6 @@ const Index = () => {
       setIsScrolled(window.scrollY > 500);
     };
     
-    // Use passive event listener for better performance
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -38,9 +36,6 @@ const Index = () => {
       <Aurora speed={0.5} amplitude={1.2} blend={0.6} />
       <CustomCursor />
       <HeroSection />
-      
-      {/* Section divider */}
-      <div className="section-divider"></div>
       
       <div className="animate-in" data-animate>
         <ExperienceSection />
