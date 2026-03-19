@@ -356,18 +356,14 @@
   transform: scale(1.08);
 }
 
-/* 3D Card Effect */
+/* 3D Card Effect - Subtle */
 .card-3d {
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  transform-style: preserve-3d;
-  perspective: 1000px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .card-3d:hover {
-  transform: rotateX(5deg) rotateY(5deg);
-  box-shadow: 
-    -10px 10px 20px rgba(0, 0, 0, 0.3),
-    10px -10px 20px rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 /* Section Dividers */
