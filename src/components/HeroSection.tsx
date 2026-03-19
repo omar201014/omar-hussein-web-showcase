@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, MapPin, Download, ChevronDown, Mouse, Phone } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Download, ChevronDown, Mouse, Phone, ExternalLink } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useTypewriter } from '@/hooks/useTypewriter';
 import { useState, useEffect } from 'react';
