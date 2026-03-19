@@ -170,6 +170,16 @@ const HeroSection = () => {
                   <Linkedin className="h-5 w-5" />
                 </Button>
               </a>
+              <a 
+                href="https://www.upwork.com/freelancers/~0127c70a7dce1e5102?mp_source=share" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="transform hover:scale-110 transition-all duration-300"
+              >
+                <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow">
+                  <ExternalLink className="h-5 w-5" />
+                </Button>
+              </a>
             </div>
           </div>
           
