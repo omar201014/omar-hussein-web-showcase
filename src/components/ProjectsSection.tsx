@@ -142,30 +142,30 @@ const ProjectsSection = () => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    const rotateX = ((y - centerY) / centerY) * 35;
-    const rotateY = ((x - centerX) / centerX) * -35;
+    const rotateX = ((y - centerY) / centerY) * 6;
+    const rotateY = ((x - centerX) / centerX) * -6;
     
-    card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(80px) scale(1.05)`;
-    card.style.boxShadow = '0 30px 60px -10px rgba(124, 58, 237, 0.5)';
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    card.style.boxShadow = '0 20px 40px -12px rgba(124, 58, 237, 0.3)';
   }, [isMobile]);
   
   const handleMouseLeave = useCallback((e: React.MouseEvent) => {
     if (isMobile) return;
     
     const card = e.currentTarget as HTMLElement;
-    card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)';
+    card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)';
     card.style.boxShadow = '';
   }, [isMobile]);
 
   const renderProjectCard = (project: Project, index: number) => (
     <Card 
       key={index} 
-      className={`group project-card transition-all duration-500 bg-white/70 dark:bg-background/50 backdrop-blur-xl border border-white/20 dark:border-white/10 hover:border-purple-500/50 overflow-visible relative hover:shadow-2xl hover:shadow-purple-500/20 ${
-        hoveredIndex === index ? 'ring-2 ring-purple-500/50' : ''
+      className={`group project-card transition-all duration-300 ease-out bg-white/70 dark:bg-background/50 backdrop-blur-xl border border-white/20 dark:border-white/10 hover:border-purple-500/40 overflow-hidden relative ${
+        hoveredIndex === index ? 'ring-1 ring-purple-500/30' : ''
       } ${
-        project.featured ? 'border-2 border-purple-500/40 shadow-xl shadow-purple-500/10' : ''
+        project.featured ? 'border-2 border-purple-500/30 shadow-lg shadow-purple-500/5' : ''
       }`}
-      style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
+      style={{ transformStyle: 'preserve-3d' }}
       onMouseMove={(e) => handleMouseMove(e, index)}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={() => setHoveredIndex(index)}
