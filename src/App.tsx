@@ -10,13 +10,17 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 
 const queryClient = new QueryClient();
 
+const basename = window.location.pathname.startsWith('/omar-hussein-web-showcase')
+  ? '/omar-hussein-web-showcase'
+  : '/';
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider defaultTheme="dark">
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <BrowserRouter basename={basename}>
           <Routes>
             <Route path="/" element={<Index />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
