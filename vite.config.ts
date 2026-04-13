@@ -6,7 +6,7 @@ import compression from "vite-plugin-compression";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/omar-hussein-web-showcase/',
+  base: mode === 'production' ? '/omar-hussein-web-showcase/' : '/',
   server: {
     host: "0.0.0.0",
     port: 8080,
