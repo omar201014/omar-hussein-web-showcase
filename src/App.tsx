@@ -10,9 +10,18 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 
 const queryClient = new QueryClient();
 
-const basename = window.location.pathname.startsWith('/omar-hussein-web-showcase')
-  ? '/omar-hussein-web-showcase'
-  : '/';
+const getBasename = () => {
+  const { hostname, pathname } = window.location;
+
+  if (hostname.endsWith("github.io")) {
+    const [repoName] = pathname.split("/").filter(Boolean);
+    return repoName ? `/${repoName}` : "/";
+  }
+
+  return "/";
+};
+
+const basename = getBasename();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

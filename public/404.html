@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script>
+      const segments = window.location.pathname.split("/").filter(Boolean);
+      const repoName = window.location.hostname.endsWith("github.io") && segments.length > 0
+        ? `/${segments[0]}`
+        : "";
+
+      window.location.replace(`${window.location.origin}${repoName}/`);
+    </script>
+  </head>
+  <body></body>
+</html>
