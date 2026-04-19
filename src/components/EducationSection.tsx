@@ -31,7 +31,7 @@ const EducationSection = () => {
           {education.map((edu, index) => (
             <Card 
               key={index} 
-              className="glass group hover:bg-purple-500/10 transition-all duration-500 transform hover:scale-[1.02] overflow-hidden relative"
+              className="glass gradient-border group hover:bg-purple-500/10 transition-all duration-500 transform hover:scale-[1.02] overflow-hidden relative"
               data-stagger
             >
               <div className="absolute inset-0 bg-gradient-to-bl from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
