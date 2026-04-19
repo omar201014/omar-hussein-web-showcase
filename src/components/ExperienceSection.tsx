@@ -41,7 +41,7 @@ const ExperienceSection = () => {
           {experiences.map((exp, index) => (
             <Card 
               key={index} 
-              className="glass transform transition-all duration-500 hover:scale-[1.02] group hover:bg-purple-500/10 overflow-hidden"
+              className="glass gradient-border transform transition-all duration-500 hover:scale-[1.02] group hover:bg-purple-500/10 overflow-hidden"
               data-stagger
             >
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

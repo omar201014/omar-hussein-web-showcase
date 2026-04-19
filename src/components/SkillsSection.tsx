@@ -39,7 +39,7 @@ const SkillsSection = () => {
           {Object.entries(skills).map(([category, { icon, items }], index) => (
             <Card 
               key={category} 
-              className="glass hover:bg-primary/5 dark:hover:bg-purple-500/10 transition-all duration-500 hover:scale-[1.03] group overflow-hidden relative !border-white/30 dark:!border-white/15"
+              className="glass gradient-border hover:bg-primary/5 dark:hover:bg-purple-500/10 transition-all duration-500 hover:scale-[1.03] group overflow-hidden relative !border-white/30 dark:!border-white/15"
               data-stagger
             >
               <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary via-primary/70 to-primary/50 opacity-60 group-hover:opacity-100 transition-all duration-500 group-hover:w-3"></div>

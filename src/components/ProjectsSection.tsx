@@ -160,7 +160,7 @@ const ProjectsSection = () => {
   const renderProjectCard = (project: Project, index: number) => (
     <Card 
       key={index} 
-      className={`group project-card transition-all duration-300 ease-out bg-white/70 dark:bg-background/50 backdrop-blur-xl border border-white/30 dark:border-white/10 hover:border-purple-500/40 overflow-hidden relative ${
+      className={`group project-card gradient-border transition-all duration-300 ease-out bg-white/70 dark:bg-background/50 backdrop-blur-xl border border-white/30 dark:border-white/10 hover:border-purple-500/40 overflow-hidden relative ${
         hoveredIndex === index ? 'ring-1 ring-purple-500/30' : ''
       } ${
         project.featured ? '!border-purple-500/40 shadow-lg shadow-purple-500/10' : ''

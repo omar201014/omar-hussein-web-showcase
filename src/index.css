@@ -134,6 +134,53 @@
   transform: translateY(-2px);
 }
 
+/* Animated gradient accent border on hover for section cards */
+.gradient-border {
+  position: relative;
+  isolation: isolate;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(
+    130deg,
+    hsl(265 90% 65%),
+    hsl(330 90% 65%),
+    hsl(195 95% 60%),
+    hsl(265 90% 65%)
+  );
+  background-size: 300% 300%;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+  z-index: 1;
+  animation: gradientBorderShift 6s linear infinite;
+}
+
+.gradient-border:hover::before,
+.gradient-border:focus-within::before {
+  opacity: 1;
+}
+
+@keyframes gradientBorderShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-border::before { animation: none; }
+}
+
 /* Smooth fade-in slide-up entrance animations */
 [data-animate]:not(.animate-in) {
   opacity: 0;
