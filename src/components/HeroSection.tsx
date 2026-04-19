@@ -270,7 +270,7 @@ const HeroSection = () => {
           <div className="md:col-span-5 lg:col-span-4 flex justify-center md:justify-end animate-fade-in order-1 md:order-2">
             <div className="relative rounded-full w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 border-4 border-purple-500/30 overflow-hidden bg-white/10 backdrop-blur-lg shadow-xl hover:scale-105 transition-all duration-500 hover-glow">
               <img 
-                src="lovable-uploads/MyphotoHD suit enhanced.webp" 
+                src="lovable-uploads/profile-photo-2.jpeg" 
                 alt="Omar Hussein - Web Developer" 
                 className="object-cover w-full h-full"
                 style={{ backgroundColor: "white" }}
