@@ -119,9 +119,14 @@
 }
 
 .glass {
-  @apply bg-white/80 dark:bg-white/10 backdrop-blur-lg border border-border rounded-xl;
+  @apply bg-white/80 dark:bg-white/10 backdrop-blur-lg rounded-xl;
+  border: 1px solid rgba(255, 255, 255, 0.35);
   transition: var(--transition-smooth);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+.dark .glass {
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .glass:hover {
