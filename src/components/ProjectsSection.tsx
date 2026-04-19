@@ -271,7 +271,7 @@ const ProjectsSection = () => {
   );
 
   return (
-    <section className="py-16 sm:py-20 px-4 sm:px-6 md:px-8 bg-secondary/50 parallax-section" id="projects">
+    <section className="py-16 sm:py-20 px-4 sm:px-6 md:px-8 parallax-section" id="projects">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-center bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent animate-fade-in">
           Projects

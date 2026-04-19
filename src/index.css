@@ -232,17 +232,59 @@
   animation-delay: 800ms;
 }
 
-/* Enhanced parallax effect for sections */
+/* Enhanced parallax effect for sections — aligned with Hero overlay */
 .parallax-section {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
+/* Animated colorful gradient mesh */
 .parallax-section::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, hsl(var(--glow-primary) / 0.05), hsl(var(--glow-secondary) / 0.05));
+  z-index: -2;
+  background:
+    radial-gradient(at 18% 22%, hsl(280 90% 65% / 0.28) 0px, transparent 45%),
+    radial-gradient(at 82% 18%, hsl(195 95% 60% / 0.25) 0px, transparent 45%),
+    radial-gradient(at 75% 82%, hsl(330 90% 65% / 0.25) 0px, transparent 45%),
+    radial-gradient(at 22% 78%, hsl(255 90% 65% / 0.28) 0px, transparent 45%),
+    radial-gradient(at 50% 50%, hsl(160 80% 55% / 0.18) 0px, transparent 55%);
+  background-size: 200% 200%;
+  animation: heroMeshShift 22s ease-in-out infinite alternate;
+  filter: saturate(1.1);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.dark .parallax-section::before {
+  opacity: 1;
+}
+
+/* Film grain + vignette */
+.parallax-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at center, transparent 55%, hsl(var(--background) / 0.6) 100%);
+  background-blend-mode: overlay, normal;
+  opacity: 0.6;
+}
+
+/* Reuse the existing hero mesh shift keyframes if defined; provide fallback */
+@keyframes heroMeshShift {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 20% 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-section::before { animation: none; }
 }
 
 /* Floating animation for decorative elements */
