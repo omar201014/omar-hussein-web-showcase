@@ -20,7 +20,7 @@ const EducationSection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-secondary/50 parallax-section" id="education">
+    <section className="py-16 md:py-20 px-4 sm:px-6 md:px-8 parallax-section" id="education">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-fade-in">Education</h2>
         <p className="text-base md:text-lg text-center text-muted-foreground mb-10 md:mb-14 max-w-2xl mx-auto px-4 leading-relaxed">
