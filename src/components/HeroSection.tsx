@@ -249,7 +249,7 @@ const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="transform hover:scale-110 transition-all duration-300"
               >
-                <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow">
+                <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow !border-white/25 dark:!border-white/15">
                   <Linkedin className="h-5 w-5" />
                 </Button>
               </a>
@@ -259,7 +259,7 @@ const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="transform hover:scale-105 transition-all duration-300"
               >
-                <Button variant="outline" size="sm" className="gap-2 glass hover:bg-white/20 shadow-lg hover-glow button-glow font-medium">
+                <Button variant="outline" size="sm" className="gap-2 glass hover:bg-white/20 shadow-lg hover-glow button-glow font-medium !border-white/25 dark:!border-white/15">
                   <Briefcase className="h-4 w-4" />
                   Hire Me
                 </Button>
