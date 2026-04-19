@@ -49,8 +49,91 @@ const HeroSection = () => {
         src="lovable-uploads/dark galaxy blue.mp4"
       />
 
-      {/* Theme-aware overlay for content readability */}
-      <div className="absolute inset-0 bg-white/60 dark:bg-black/60"></div>
+      {/* Multi-layer cinematic overlay for richer visuals */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Base readability tint */}
+        <div className="absolute inset-0 bg-white/55 dark:bg-black/55" />
+
+        {/* Animated colorful gradient mesh */}
+        <div
+          className="absolute inset-0 opacity-70 dark:opacity-80 mix-blend-soft-light dark:mix-blend-screen hero-mesh"
+          aria-hidden="true"
+        />
+
+        {/* Floating color blobs */}
+        <div className="absolute -top-32 -left-24 w-[42rem] h-[42rem] rounded-full bg-gradient-to-br from-fuchsia-500/40 via-purple-500/30 to-transparent blur-3xl hero-blob-a" />
+        <div className="absolute -bottom-40 -right-24 w-[40rem] h-[40rem] rounded-full bg-gradient-to-tr from-cyan-400/40 via-sky-500/30 to-transparent blur-3xl hero-blob-b" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[34rem] h-[34rem] rounded-full bg-gradient-to-r from-pink-500/30 via-violet-500/25 to-indigo-500/30 blur-3xl hero-blob-c" />
+
+        {/* Subtle grid sheen (light mode pop) */}
+        <div
+          className="absolute inset-0 opacity-[0.07] dark:opacity-[0.05]"
+          style={{
+            backgroundImage:
+              'linear-gradient(hsl(var(--foreground)/0.6) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)/0.6) 1px, transparent 1px)',
+            backgroundSize: '48px 48px',
+            maskImage:
+              'radial-gradient(ellipse at center, black 30%, transparent 75%)',
+            WebkitMaskImage:
+              'radial-gradient(ellipse at center, black 30%, transparent 75%)',
+          }}
+        />
+
+        {/* Film grain */}
+        <div
+          className="absolute inset-0 opacity-[0.12] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E\")",
+          }}
+        />
+
+        {/* Vignette for focus */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse at center, transparent 55%, hsl(var(--background)/0.55) 100%)',
+          }}
+        />
+
+        <style>{`
+          .hero-mesh {
+            background:
+              radial-gradient(at 18% 22%, hsl(280 90% 65% / 0.55) 0px, transparent 45%),
+              radial-gradient(at 82% 18%, hsl(195 95% 60% / 0.5) 0px, transparent 45%),
+              radial-gradient(at 75% 82%, hsl(330 90% 65% / 0.5) 0px, transparent 45%),
+              radial-gradient(at 22% 78%, hsl(255 90% 65% / 0.55) 0px, transparent 45%),
+              radial-gradient(at 50% 50%, hsl(160 80% 55% / 0.35) 0px, transparent 55%);
+            background-size: 200% 200%;
+            animation: heroMeshShift 18s ease-in-out infinite alternate;
+            filter: saturate(1.15);
+          }
+          @keyframes heroMeshShift {
+            0%   { background-position: 0% 0%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 20% 100%; }
+          }
+          .hero-blob-a { animation: heroBlobA 16s ease-in-out infinite; }
+          .hero-blob-b { animation: heroBlobB 20s ease-in-out infinite; }
+          .hero-blob-c { animation: heroBlobC 24s ease-in-out infinite; }
+          @keyframes heroBlobA {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50%     { transform: translate(40px,30px) scale(1.1); }
+          }
+          @keyframes heroBlobB {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50%     { transform: translate(-50px,-20px) scale(1.08); }
+          }
+          @keyframes heroBlobC {
+            0%,100% { transform: translate(-50%,0) scale(1); }
+            50%     { transform: translate(-50%,-40px) scale(1.05); }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .hero-mesh, .hero-blob-a, .hero-blob-b, .hero-blob-c { animation: none !important; }
+          }
+        `}</style>
+      </div>
       
       {/* Header with Logo and Theme Toggle */}
       <div className="absolute top-8 left-8 right-8 z-20 flex justify-between items-center">
