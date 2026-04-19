@@ -175,7 +175,7 @@ const HeroSection = () => {
             </h2>
             
             <p 
-              className="text-muted-foreground/90 max-w-2xl text-lg leading-relaxed glass p-6 animate-fade-in delay-500 hover:bg-white/20 transition-all duration-300 rounded-xl backdrop-blur-lg shadow-lg card-3d"
+              className="text-muted-foreground/90 max-w-2xl text-lg leading-relaxed glass p-6 animate-fade-in delay-500 hover:bg-white/20 transition-all duration-300 rounded-xl backdrop-blur-lg shadow-lg card-3d !border-white/20 dark:!border-white/15"
             >
               With over 2 years of WordPress expertise, I've designed and developed 20+ websites for diverse industries, including healthcare, travel, and e-commerce. My work focuses on creating responsive, conversion-driven layouts, integrating CRMs like Bitrix24 for streamlined workflows, and collaborating with cross-functional teams to align design with business goals. This approach has consistently improved client engagement by 30%+ and accelerated project delivery timelines.
             </p>
@@ -185,7 +185,7 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow"
+                className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow !border-white/25 dark:!border-white/15"
               >
                 <MapPin className="h-5 w-5 text-purple-300" /> Alexandria, Egypt
               </Button>
@@ -196,7 +196,7 @@ const HeroSection = () => {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow"
+                  className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow !border-white/25 dark:!border-white/15"
                 >
                   <Mail className="h-5 w-5 text-purple-300" /> omar.hussein201014@outlook.com
                 </Button>
@@ -208,7 +208,7 @@ const HeroSection = () => {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow"
+                  className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow !border-white/25 dark:!border-white/15"
                 >
                   <Phone className="h-5 w-5 text-purple-300" /> (+20)11 116-09093
                 </Button>
@@ -239,7 +239,7 @@ const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="transform hover:scale-110 transition-all duration-300"
               >
-                <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow">
+                <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow !border-white/25 dark:!border-white/15">
                   <Github className="h-5 w-5" />
                 </Button>
               </a>
@@ -249,7 +249,7 @@ const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="transform hover:scale-110 transition-all duration-300"
               >
-                <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow">
+                <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow !border-white/25 dark:!border-white/15">
                   <Linkedin className="h-5 w-5" />
                 </Button>
               </a>
@@ -259,7 +259,7 @@ const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="transform hover:scale-105 transition-all duration-300"
               >
-                <Button variant="outline" size="sm" className="gap-2 glass hover:bg-white/20 shadow-lg hover-glow button-glow font-medium">
+                <Button variant="outline" size="sm" className="gap-2 glass hover:bg-white/20 shadow-lg hover-glow button-glow font-medium !border-white/25 dark:!border-white/15">
                   <Briefcase className="h-4 w-4" />
                   Hire Me
                 </Button>
