@@ -239,7 +239,7 @@ const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="transform hover:scale-110 transition-all duration-300"
               >
-                <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow">
+                <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow !border-white/25 dark:!border-white/15">
                   <Github className="h-5 w-5" />
                 </Button>
               </a>
