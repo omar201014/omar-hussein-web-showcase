@@ -36,7 +36,7 @@ const HeroSection = () => {
 
   return (
     <section 
-      className="min-h-screen flex flex-col justify-center items-start p-8 md:p-16 relative overflow-hidden"
+      className="min-h-screen flex flex-col justify-center items-stretch px-4 sm:px-6 md:px-10 lg:px-16 pt-24 pb-20 md:pt-28 md:pb-24 relative overflow-hidden"
     >
       {/* Video Background */}
       <video
@@ -136,12 +136,12 @@ const HeroSection = () => {
       </div>
       
       {/* Header with Logo and Theme Toggle */}
-      <div className="absolute top-8 left-8 right-8 z-20 flex justify-between items-center">
+      <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 md:top-8 md:left-8 md:right-8 z-20 flex justify-between items-center">
         <div>
           <img 
             src="lovable-uploads/logo white.png" 
             alt="Omar Hussein Logo" 
-            className="h-12 md:h-16 block dark:hidden"
+            className="h-10 sm:h-12 md:h-16 block dark:hidden"
             loading="eager"
             width="64"
             height="64"
@@ -149,7 +149,7 @@ const HeroSection = () => {
           <img 
             src="lovable-uploads/Logo Dark.png" 
             alt="Omar Hussein Logo" 
-            className="h-12 md:h-16 hidden dark:block"
+            className="h-10 sm:h-12 md:h-16 hidden dark:block"
             loading="eager"
             width="64"
             height="64"
@@ -158,65 +158,62 @@ const HeroSection = () => {
         <ThemeToggle />
       </div>
       
-      <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="flex flex-col-reverse md:flex-row gap-8 items-center md:items-start">
+      <div className="container mx-auto max-w-7xl relative z-10 w-full flex-1 flex items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 lg:gap-14 items-center w-full">
           {/* Content Column */}
-          <div className="space-y-6 md:w-2/3">
-            <h1 
-              className="text-5xl md:text-7xl font-bold mb-4 text-gradient hover:scale-105 transition-transform duration-300"
-            >
-              {typedName || "Omar Hussein"}
-            </h1>
-            
-            <h2 
-              className="text-2xl md:text-3xl font-semibold text-gradient-blue hover:scale-105 transition-transform duration-300"
-            >
-              {typedRole || "Web Developer"}
-            </h2>
+          <div className="md:col-span-7 lg:col-span-8 space-y-5 md:space-y-6 order-2 md:order-1 text-center md:text-left">
+            <div className="space-y-2 md:space-y-3">
+              <h1 
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gradient hover:scale-[1.02] transition-transform duration-300 leading-tight"
+              >
+                {typedName || "Omar Hussein"}
+              </h1>
+              
+              <h2 
+                className="text-xl sm:text-2xl md:text-3xl font-semibold text-gradient-blue hover:scale-[1.02] transition-transform duration-300"
+              >
+                {typedRole || "Web Developer"}
+              </h2>
+            </div>
             
             <p 
-              className="text-muted-foreground/90 max-w-2xl text-lg leading-relaxed glass p-6 animate-fade-in delay-500 hover:bg-white/20 transition-all duration-300 rounded-xl backdrop-blur-lg shadow-lg card-3d !border-white/20 dark:!border-white/15"
+              className="text-muted-foreground/90 max-w-2xl mx-auto md:mx-0 text-sm sm:text-base md:text-lg leading-relaxed glass p-4 sm:p-5 md:p-6 animate-fade-in delay-500 hover:bg-white/20 transition-all duration-300 rounded-xl backdrop-blur-lg shadow-lg card-3d !border-white/20 dark:!border-white/15"
             >
               With over 2 years of WordPress expertise, I've designed and developed 20+ websites for diverse industries, including healthcare, travel, and e-commerce. My work focuses on creating responsive, conversion-driven layouts, integrating CRMs like Bitrix24 for streamlined workflows, and collaborating with cross-functional teams to align design with business goals. This approach has consistently improved client engagement by 30%+ and accelerated project delivery timelines.
             </p>
             
             {/* Contact Details */}
-            <div className="flex flex-wrap gap-4 pt-4 opacity-100 visible">
+            <div className="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-3 pt-2 opacity-100 visible">
               <Button 
                 variant="outline" 
-                size="lg" 
-                className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow !border-white/25 dark:!border-white/15"
+                size="sm"
+                className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow !border-white/25 dark:!border-white/15 text-xs sm:text-sm"
               >
-                <MapPin className="h-5 w-5 text-purple-300" /> Alexandria, Egypt
+                <MapPin className="h-4 w-4 text-purple-300" /> Alexandria, Egypt
               </Button>
-              <a 
-                href="mailto:omar.hussein201014@outlook.com"
-                className="inline-block"
-              >
+              <a href="mailto:omar.hussein201014@outlook.com" className="inline-block">
                 <Button 
                   variant="outline" 
-                  size="lg" 
-                  className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow !border-white/25 dark:!border-white/15"
+                  size="sm"
+                  className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow !border-white/25 dark:!border-white/15 text-xs sm:text-sm max-w-full"
                 >
-                  <Mail className="h-5 w-5 text-purple-300" /> omar.hussein201014@outlook.com
+                  <Mail className="h-4 w-4 text-purple-300 shrink-0" />
+                  <span className="truncate">omar.hussein201014@outlook.com</span>
                 </Button>
               </a>
-              <a 
-                href="tel:+201111609093"
-                className="inline-block"
-              >
+              <a href="tel:+201111609093" className="inline-block">
                 <Button 
                   variant="outline" 
-                  size="lg" 
-                  className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow !border-white/25 dark:!border-white/15"
+                  size="sm"
+                  className="gap-2 glass hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-lg button-glow !border-white/25 dark:!border-white/15 text-xs sm:text-sm"
                 >
-                  <Phone className="h-5 w-5 text-purple-300" /> (+20)11 116-09093
+                  <Phone className="h-4 w-4 text-purple-300" /> (+20)11 116-09093
                 </Button>
               </a>
             </div>
 
-            {/* Resume Download Button */}
-            <div className="pt-2">
+            {/* Action Row: Resume + Social Links */}
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
               <a 
                 href="https://drive.google.com/file/d/19-3BaZZDfB4Wk9XeNCovSc7gbzwE7_Rp/view?usp=drive_link" 
                 target="_blank" 
@@ -224,35 +221,12 @@ const HeroSection = () => {
                 className="inline-block"
               >
                 <Button 
-                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300"
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-5 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300"
                 >
-                  <Download className="h-5 w-5 mr-2" /> Download Resume
+                  <Download className="h-4 w-4 mr-2" /> Download Resume
                 </Button>
               </a>
-            </div>
 
-            {/* Social Links */}
-            <div className="flex gap-4 pt-2 opacity-100 visible">
-              <a 
-                href="https://github.com/omar201014" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="transform hover:scale-110 transition-all duration-300"
-              >
-                <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow !border-white/25 dark:!border-white/15">
-                  <Github className="h-5 w-5" />
-                </Button>
-              </a>
-              <a 
-                href="https://linkedin.com/in/omar-hussein-201014" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="transform hover:scale-110 transition-all duration-300"
-              >
-                <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow !border-white/25 dark:!border-white/15">
-                  <Linkedin className="h-5 w-5" />
-                </Button>
-              </a>
               <a 
                 href="https://www.upwork.com/freelancers/~0127c70a7dce1e5102?mp_source=share" 
                 target="_blank" 
@@ -264,38 +238,63 @@ const HeroSection = () => {
                   Hire Me
                 </Button>
               </a>
+
+              <div className="flex gap-2">
+                <a 
+                  href="https://github.com/omar201014" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="transform hover:scale-110 transition-all duration-300"
+                  aria-label="GitHub"
+                >
+                  <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow !border-white/25 dark:!border-white/15 h-9 w-9">
+                    <Github className="h-4 w-4" />
+                  </Button>
+                </a>
+                <a 
+                  href="https://linkedin.com/in/omar-hussein-201014" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="transform hover:scale-110 transition-all duration-300"
+                  aria-label="LinkedIn"
+                >
+                  <Button variant="outline" size="icon" className="glass hover:bg-white/20 shadow-lg hover-glow !border-white/25 dark:!border-white/15 h-9 w-9">
+                    <Linkedin className="h-4 w-4" />
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
           
           {/* Photo Column */}
-          <div className="md:w-1/3 flex justify-center md:justify-end animate-fade-in">
-            <div className="relative rounded-full w-64 h-64 border-4 border-purple-500/30 overflow-hidden bg-white/10 backdrop-blur-lg shadow-xl hover:scale-105 transition-all duration-500 hover-glow">
+          <div className="md:col-span-5 lg:col-span-4 flex justify-center md:justify-end animate-fade-in order-1 md:order-2">
+            <div className="relative rounded-full w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 border-4 border-purple-500/30 overflow-hidden bg-white/10 backdrop-blur-lg shadow-xl hover:scale-105 transition-all duration-500 hover-glow">
               <img 
                 src="lovable-uploads/MyphotoHD suit enhanced.webp" 
                 alt="Omar Hussein - Web Developer" 
-                className="object-contain w-full h-full"
-                style={{ backgroundColor: "white", height: "300px" }}
+                className="object-cover w-full h-full"
+                style={{ backgroundColor: "white" }}
                 loading="eager"
-                width="256"
-                height="256"
+                width="288"
+                height="288"
               />
-              <div className="absolute inset-0 ring-4 ring-purple-500/30 rounded-full"></div>
+              <div className="absolute inset-0 ring-4 ring-purple-500/30 rounded-full pointer-events-none"></div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Scroll Indicator - now clickable with mouse icon */}
-        <div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center transition-opacity duration-500 cursor-pointer hover:scale-110"
-          style={{ opacity: scrollIndicatorOpacity }}
-          onClick={scrollToNextSection}
-        >
-          <div className="flex items-center gap-2 mb-2">
-            <Mouse className="h-5 w-5 text-primary" />
-            <span className="text-sm text-primary font-medium">Scroll Down</span>
-          </div>
-          <ChevronDown className="h-6 w-6 text-primary animate-bounce" />
+      {/* Scroll Indicator */}
+      <div 
+        className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center transition-opacity duration-500 cursor-pointer hover:scale-110 z-10"
+        style={{ opacity: scrollIndicatorOpacity }}
+        onClick={scrollToNextSection}
+      >
+        <div className="flex items-center gap-2 mb-1">
+          <Mouse className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+          <span className="text-xs sm:text-sm text-primary font-medium">Scroll Down</span>
         </div>
+        <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6 text-primary animate-bounce" />
       </div>
     </section>
   );
