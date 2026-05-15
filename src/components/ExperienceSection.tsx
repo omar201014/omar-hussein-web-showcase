@@ -30,19 +30,18 @@ const ExperienceSection = () => {
   return (
     <section className="py-16 md:py-20 px-4 sm:px-6 md:px-8 parallax-section" id="experience">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-center bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-fade-in">
+        <h2 data-reveal className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-center bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
           Experience
         </h2>
-        <p className="text-base md:text-lg text-center text-muted-foreground mb-10 md:mb-14 max-w-2xl mx-auto px-4 leading-relaxed">
+        <p data-reveal style={{ ['--reveal-delay' as any]: '120ms' }} className="text-base md:text-lg text-center text-muted-foreground mb-10 md:mb-14 max-w-2xl mx-auto px-4 leading-relaxed">
           Professional journey leveraging web development expertise across international projects
         </p>
         
-        <div className="grid gap-6 md:gap-8" data-animate>
+        <div className="grid gap-6 md:gap-8" data-reveal-group="up">
           {experiences.map((exp, index) => (
             <Card 
               key={index} 
               className="glass gradient-border transform transition-all duration-500 hover:scale-[1.02] group hover:bg-purple-500/10 overflow-hidden"
-              data-stagger
             >
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <CardHeader className="relative p-5 md:p-8 z-10">

@@ -1,109 +1,88 @@
+import { useEffect } from 'react';
 
-import { useEffect, useRef, useCallback } from 'react';
-
+/**
+ * Reveal-on-scroll system.
+ *
+ * Usage:
+ *   <h2 data-reveal>Heading</h2>                  // default fade-up
+ *   <p data-reveal="fade">…</p>                   // simple fade
+ *   <div data-reveal="left">…</div>               // slide from left
+ *   <div data-reveal-group>                       // auto-staggers direct children
+ *     <Card />
+ *     <Card />
+ *   </div>
+ *
+ * Optional per-element delay override:
+ *   <div data-reveal style={{ ['--reveal-delay' as any]: '300ms' }} />
+ *
+ * - Each element animates exactly once (observer disconnects per element).
+ * - Mobile (≤768px) bypass is handled in CSS for instant visibility.
+ * - Re-runs the scan on DOM mutations so async-rendered children are picked up.
+ */
 export const useScrollAnimation = () => {
-  const observerRef = useRef<IntersectionObserver | null>(null);
-  const animatedElementsRef = useRef<Set<Element>>(new Set());
-  const rafRef = useRef<number | null>(null);
-
-  const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
-    // Cancel any pending animation frames
-    if (rafRef.current) {
-      cancelAnimationFrame(rafRef.current);
-    }
-
-    rafRef.current = requestAnimationFrame(() => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !animatedElementsRef.current.has(entry.target)) {
-          animatedElementsRef.current.add(entry.target);
-          
-          entry.target.classList.add('animate-in');
-          
-          // If this is a project card itself, just animate it
-          if (entry.target.classList.contains('project-card')) {
-            observerRef.current?.unobserve(entry.target);
-            return;
-          }
-          
-          // Handle project cards with staggered animation
-          const projectCards = entry.target.querySelectorAll('.project-card');
-          if (projectCards.length) {
-            projectCards.forEach((card, index) => {
-              setTimeout(() => {
-                requestAnimationFrame(() => {
-                  card.classList.add('animate-in');
-                });
-              }, 100 * index); // Faster stagger for better performance
-            });
-          }
-          
-          // Handle stagger children
-          const children = entry.target.querySelectorAll('[data-stagger]');
-          if (children.length) {
-            children.forEach((child, index) => {
-              const element = child as HTMLElement;
-              element.style.transitionDelay = `${0.05 + (index * 0.06)}s`;
-              element.style.transitionDuration = '0.5s';
-              requestAnimationFrame(() => {
-                element.classList.add('animate-in');
-              });
-            });
-          }
-          
-          // Unobserve after animation to free memory
-          setTimeout(() => {
-            observerRef.current?.unobserve(entry.target);
-          }, 800);
-        }
-      });
-    });
-  }, []);
-
   useEffect(() => {
-    // Small delay to ensure CSS is applied before observing
-    const setupObserver = () => {
-      if (!observerRef.current) {
-        // Optimized settings for smooth scroll-triggered animations
-        observerRef.current = new IntersectionObserver(handleIntersection, {
-          threshold: 0.1, // Trigger earlier for smoother feel
-          rootMargin: '0px 0px -80px 0px', // Trigger when scrolled into view
-        });
+    if (typeof window === 'undefined') return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            el.classList.add('is-revealed');
+            observer.unobserve(el);
+          }
+        }
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -10% 0px',
+      }
+    );
+
+    const STAGGER_STEP = 110; // ms between siblings
+
+    const register = (el: HTMLElement) => {
+      if (el.dataset.revealRegistered === '1') return;
+      el.dataset.revealRegistered = '1';
+
+      if (prefersReducedMotion) {
+        el.classList.add('is-revealed');
+        return;
       }
 
-      const elements = document.querySelectorAll('[data-animate]');
-      elements.forEach((el) => {
-        // Ensure initial state is set
-        if (!animatedElementsRef.current.has(el)) {
-          el.classList.remove('animate-in');
-        }
-        observerRef.current?.observe(el);
-      });
-
-      // Also directly observe project cards
-      const projectCards = document.querySelectorAll('.project-card');
-      projectCards.forEach((card) => {
-        // Ensure initial state is set
-        if (!animatedElementsRef.current.has(card)) {
-          card.classList.remove('animate-in');
-        }
-        observerRef.current?.observe(card);
-      });
+      observer.observe(el);
     };
 
-    // Use RAF to ensure DOM is ready and CSS is applied
-    requestAnimationFrame(() => {
-      setTimeout(setupObserver, 30); // Reduced delay for faster setup
-    });
+    const scan = () => {
+      // Auto-stagger groups: tag direct children with data-reveal + delay
+      document.querySelectorAll<HTMLElement>('[data-reveal-group]').forEach((group) => {
+        const children = Array.from(group.children) as HTMLElement[];
+        children.forEach((child, i) => {
+          if (!child.hasAttribute('data-reveal')) {
+            child.setAttribute('data-reveal', group.dataset.revealGroup || 'up');
+          }
+          if (!child.style.getPropertyValue('--reveal-delay')) {
+            child.style.setProperty('--reveal-delay', `${i * STAGGER_STEP}ms`);
+          }
+        });
+      });
+
+      document.querySelectorAll<HTMLElement>('[data-reveal]').forEach(register);
+    };
+
+    // Initial scan after paint
+    const raf = requestAnimationFrame(scan);
+
+    // Re-scan when DOM changes (lazy content, route transitions, etc.)
+    const mo = new MutationObserver(() => scan());
+    mo.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-        observerRef.current = null;
-      }
-      animatedElementsRef.current.clear();
+      cancelAnimationFrame(raf);
+      mo.disconnect();
+      observer.disconnect();
     };
-  }, [handleIntersection]);
+  }, []);
 };

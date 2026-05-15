@@ -42,21 +42,10 @@ const Index = () => {
       {/* Section divider */}
       <div className="section-divider"></div>
       
-      <div data-animate>
-        <ExperienceSection />
-      </div>
-      
-      <div data-animate>
-        <ProjectsSection />
-      </div>
-      
-      <div data-animate>
-        <SkillsSection />
-      </div>
-      
-      <div data-animate>
-        <EducationSection />
-      </div>
+      <ExperienceSection />
+      <ProjectsSection />
+      <SkillsSection />
+      <EducationSection />
       
       <Footer />
       

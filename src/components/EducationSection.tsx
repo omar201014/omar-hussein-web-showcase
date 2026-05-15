@@ -22,17 +22,16 @@ const EducationSection = () => {
   return (
     <section className="py-16 md:py-20 px-4 sm:px-6 md:px-8 parallax-section" id="education">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-fade-in">Education</h2>
-        <p className="text-base md:text-lg text-center text-muted-foreground mb-10 md:mb-14 max-w-2xl mx-auto px-4 leading-relaxed">
+        <h2 data-reveal className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Education</h2>
+        <p data-reveal style={{ ['--reveal-delay' as any]: '120ms' }} className="text-base md:text-lg text-center text-muted-foreground mb-10 md:mb-14 max-w-2xl mx-auto px-4 leading-relaxed">
           Academic qualifications forming the foundation of my technical knowledge
         </p>
         
-        <div className="grid gap-6 md:gap-8" data-animate>
+        <div className="grid gap-6 md:gap-8" data-reveal-group="up">
           {education.map((edu, index) => (
             <Card 
               key={index} 
               className="glass gradient-border group hover:bg-purple-500/10 transition-all duration-500 transform hover:scale-[1.02] overflow-hidden relative"
-              data-stagger
             >
               <div className="absolute inset-0 bg-gradient-to-bl from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <CardHeader className="flex flex-col md:flex-row md:items-center md:justify-between p-5 md:p-8 gap-4 relative z-10">
