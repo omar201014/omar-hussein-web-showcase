@@ -181,32 +181,41 @@
   .gradient-border::before { animation: none; }
 }
 
-/* Smooth fade-in slide-up entrance animations */
-[data-animate]:not(.animate-in) {
+/* ============================================================
+   Reveal-on-scroll system
+   - Drive with the `data-reveal` attribute (see useScrollAnimation)
+   - Variants: up (default) | fade | left | right | scale | blur
+   - Per-element offset via --reveal-delay (set inline or by group)
+   ============================================================ */
+[data-reveal] {
+  --reveal-duration: 900ms;
+  --reveal-delay: 0ms;
+  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
   opacity: 0;
-  transform: translateY(50px);
+  transform: translate3d(0, 40px, 0);
+  filter: blur(6px);
+  will-change: opacity, transform, filter;
+  transition:
+    opacity var(--reveal-duration) var(--reveal-ease) var(--reveal-delay),
+    transform var(--reveal-duration) var(--reveal-ease) var(--reveal-delay),
+    filter calc(var(--reveal-duration) * 0.8) var(--reveal-ease) var(--reveal-delay);
 }
 
-[data-animate] {
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
+[data-reveal="fade"]   { transform: none; }
+[data-reveal="left"]   { transform: translate3d(-50px, 0, 0); }
+[data-reveal="right"]  { transform: translate3d(50px, 0, 0); }
+[data-reveal="scale"]  { transform: translate3d(0, 30px, 0) scale(0.94); }
+[data-reveal="blur"]   { transform: translate3d(0, 20px, 0); filter: blur(14px); }
 
-[data-animate].animate-in {
+[data-reveal].is-revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
 }
 
-[data-stagger] {
-  opacity: 0;
-  transform: translateY(50px) scale(0.95);
-  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-[data-stagger].animate-in {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+/* Cleanup: drop will-change after animation completes to free the GPU layer */
+[data-reveal].is-revealed {
+  transition-property: opacity, transform, filter;
 }
 
 .animate-fade-in {
