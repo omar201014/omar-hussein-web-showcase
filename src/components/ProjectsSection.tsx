@@ -158,19 +158,19 @@ const ProjectsSection = () => {
   }, [isMobile]);
 
   const renderProjectCard = (project: Project, index: number) => (
-    <Card 
-      key={index} 
-      className={`group project-card gradient-border transition-all duration-300 ease-out bg-white/70 dark:bg-background/50 backdrop-blur-xl border border-white/30 dark:border-white/10 hover:border-purple-500/40 overflow-hidden relative ${
-        hoveredIndex === index ? 'ring-1 ring-purple-500/30' : ''
-      } ${
-        project.featured ? '!border-purple-500/40 shadow-lg shadow-purple-500/10' : ''
-      }`}
-      style={{ transformStyle: 'preserve-3d' }}
-      onMouseMove={(e) => handleMouseMove(e, index)}
-      onMouseLeave={handleMouseLeave}
-      onMouseEnter={() => setHoveredIndex(index)}
-    >
-      <CardHeader className="pb-3 p-5 md:p-6 relative z-10">
+    <div key={index} data-reveal="scale" style={{ ['--reveal-delay' as any]: `${index * 110}ms` }}>
+      <Card 
+        className={`group project-card gradient-border transition-all duration-300 ease-out bg-white/70 dark:bg-background/50 backdrop-blur-xl border border-white/30 dark:border-white/10 hover:border-purple-500/40 overflow-hidden relative ${
+          hoveredIndex === index ? 'ring-1 ring-purple-500/30' : ''
+        } ${
+          project.featured ? '!border-purple-500/40 shadow-lg shadow-purple-500/10' : ''
+        }`}
+        style={{ transformStyle: 'preserve-3d' }}
+        onMouseMove={(e) => handleMouseMove(e, index)}
+        onMouseLeave={handleMouseLeave}
+        onMouseEnter={() => setHoveredIndex(index)}
+      >
+        <CardHeader className="pb-3 p-5 md:p-6 relative z-10">
         <div className="flex items-center justify-between">
           <CardTitle className={`text-gradient ${project.featured ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'} font-bold`}>
             {project.title}
@@ -182,8 +182,8 @@ const ProjectsSection = () => {
             </Badge>
           )}
         </div>
-      </CardHeader>
-      <CardContent className="space-y-4 pt-0 p-5 md:p-6 relative z-10">
+        </CardHeader>
+        <CardContent className="space-y-4 pt-0 p-5 md:p-6 relative z-10">
         <AspectRatio ratio={16/9} className="image-zoom-container rounded-lg overflow-hidden">
           <div className="relative w-full h-full rounded-lg overflow-hidden bg-gradient-to-br from-purple-500/10 to-pink-500/10">
             <img 
@@ -266,8 +266,9 @@ const ProjectsSection = () => {
             )}
           </Button>
         </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   );
 
   return (
@@ -280,11 +281,10 @@ const ProjectsSection = () => {
           Explore my recent work crafting responsive, high-performing websites for businesses across different industries
         </p>
         
-        <div 
-          ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 lg:gap-8" 
-          {...(!isMobile && { 'data-reveal-group': 'scale' })}
-        >
+          <div 
+            ref={containerRef}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 lg:gap-8"
+          >
           {projects.map((project, index) => renderProjectCard(project, index))}
         </div>
       </div>
