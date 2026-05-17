@@ -21,7 +21,6 @@ interface Project {
 
 const ProjectsSection = () => {
   const [openVideo, setOpenVideo] = useState<string | null>(null);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
     useScrollAnimation();
@@ -160,15 +159,12 @@ const ProjectsSection = () => {
   const renderProjectCard = (project: Project, index: number) => (
     <div key={index} data-reveal="scale" style={{ ['--reveal-delay' as any]: `${index * 110}ms` }}>
       <Card 
-        className={`group project-card gradient-border transition-all duration-300 ease-out bg-white/70 dark:bg-background/50 backdrop-blur-xl border border-white/30 dark:border-white/10 hover:border-purple-500/40 overflow-hidden relative ${
-          hoveredIndex === index ? 'ring-1 ring-purple-500/30' : ''
-        } ${
+        className={`group project-card gradient-border transition-all duration-300 ease-out bg-white/70 dark:bg-background/50 backdrop-blur-xl border border-white/30 dark:border-white/10 hover:border-purple-500/40 hover:ring-1 hover:ring-purple-500/30 overflow-hidden relative ${
           project.featured ? '!border-purple-500/40 shadow-lg shadow-purple-500/10' : ''
         }`}
         style={{ transformStyle: 'preserve-3d' }}
         onMouseMove={(e) => handleMouseMove(e, index)}
         onMouseLeave={handleMouseLeave}
-        onMouseEnter={() => setHoveredIndex(index)}
       >
         <CardHeader className="pb-3 p-5 md:p-6 relative z-10">
         <div className="flex items-center justify-between">
