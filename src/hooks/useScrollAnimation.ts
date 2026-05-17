@@ -30,7 +30,7 @@ export const useScrollAnimation = () => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             const el = entry.target as HTMLElement;
-            el.classList.add('is-revealed');
+            el.dataset.revealState = 'revealed';
             observer.unobserve(el);
           }
         }
@@ -48,7 +48,7 @@ export const useScrollAnimation = () => {
       el.dataset.revealRegistered = '1';
 
       if (prefersReducedMotion) {
-        el.classList.add('is-revealed');
+        el.dataset.revealState = 'revealed';
         return;
       }
 
